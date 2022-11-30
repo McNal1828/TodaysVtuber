@@ -1,0 +1,207 @@
+import { useState } from 'react';
+
+function Container() {
+	const list = [
+		{ url: '/images/cheers.gif' },
+		{ url: '/images/cheers2.jpg' },
+		{ url: '/images/cheers3.jpg' },
+		{ url: '/images/cheers4.jpg' },
+		{ url: '/images/cheers5.jpg' },
+	];
+	const contents_list = list.map((item) => (
+		<div className='contents'>
+			<img src={process.env.PUBLIC_URL + item.url} width='460px' alt='경로이상' />
+		</div>
+	));
+
+	return (
+		<div className='container' style={{ zIndex: 10 }}>
+			{contents_list}
+		</div>
+	);
+}
+
+function Slide() {
+	const [sliderCnt, setSliderCnt] = useState(1);
+	const [isSliding, setIsSliding] = useState(false);
+
+	function right() {
+		if (!isSliding) {
+			setIsSliding(true);
+			const container = document.querySelector('.container');
+			const first = container.children[0];
+			const second = container.children[1];
+			const third = container.children[2];
+			const fourth = container.children[3];
+			const fifth = container.children[4];
+
+			first.style.left = '180px';
+			first.style.zIndex = 80;
+			second.style.left = '-180px';
+			second.style.zIndex = 80;
+			third.style.left = '-90px';
+			third.style.zIndex = 90;
+			fourth.style.left = '0px';
+			fourth.style.zIndex = 100;
+			fifth.style.left = '90px';
+			fifth.style.zIndex = 90;
+
+			setTimeout(() => {
+				console.log(isSliding);
+				const temp = fifth.cloneNode(true);
+				container.replaceChild(first.cloneNode(true), fifth);
+				container.replaceChild(second.cloneNode(true), first);
+				container.replaceChild(third.cloneNode(true), second);
+				container.replaceChild(fourth.cloneNode(true), third);
+				container.replaceChild(temp, fourth);
+			}, 550);
+			setTimeout(() => {
+				setIsSliding(false);
+				console.log(isSliding);
+			}, 600);
+		}
+		// const container = document.querySelector('.container');
+		// const first = container.children[0];
+		// const second = container.children[1];
+		// const third = container.children[2];
+		// const fourth = container.children[3];
+		// const fifth = container.children[4];
+
+		// first.style.left = '180px';
+		// first.style.zIndex = 80;
+		// second.style.left = '-180px';
+		// second.style.zIndex = 80;
+		// third.style.left = '-90px';
+		// third.style.zIndex = 90;
+		// fourth.style.left = '0px';
+		// fourth.style.zIndex = 100;
+		// fifth.style.left = '90px';
+		// fifth.style.zIndex = 90;
+		// setTimeout(() => {
+		// 	container.replaceChild(first.cloneNode(true), fifth);
+		// 	container.replaceChild(second.cloneNode(true), first);
+		// 	container.replaceChild(third.cloneNode(true), second);
+		// 	container.replaceChild(fourth.cloneNode(true), third);
+		// 	container.replaceChild(fifth.cloneNode(true), fourth);
+		// }, 510);
+		// container.replaceChild(fifth.cloneNode(true), first);
+		// container.replaceChild(first.cloneNode(true), second);
+		// container.replaceChild(second.cloneNode(true), third);
+		// container.replaceChild(third.cloneNode(true), fourth);
+		// container.replaceChild(fourth.cloneNode(true), fifth);
+
+		// const container = document.querySelector('.container');
+		// if (isSliding) {
+		// 	setIsSliding(false);
+		// 	if (sliderCnt !== 3) {
+		// 		console.log(sliderCnt);
+		// 		container.style.transform = `translateX(${sliderCnt * -460}px)`;
+		// 		setSliderCnt(sliderCnt + 1);
+		// 		setTimeout(() => {
+		// 			setIsSliding(true);
+		// 		}, 550);
+		// 	} else {
+		// 		const firstChild = container.firstChild.cloneNode(true);
+		// 		container.appendChild(firstChild);
+		// 		container.style.transform = `translateX(${sliderCnt * -460}px)`;
+		// 		setSliderCnt(1);
+		// 		setTimeout(() => {
+		// 			container.style.transition = 'none';
+		// 			container.style.transform = `translateX(0px)`;
+		// 			container.removeChild(container.lastChild);
+		// 		}, 500);
+		// 		setTimeout(() => {
+		// 			container.style.transition = 'inherit';
+		// 			setIsSliding(true);
+		// 		}, 550);
+		// 	}
+		// }
+	}
+	function left() {
+		if (!isSliding) {
+			setIsSliding(true);
+			const container = document.querySelector('.container');
+			const first = container.children[0];
+			const second = container.children[1];
+			const third = container.children[2];
+			const fourth = container.children[3];
+			const fifth = container.children[4];
+
+			first.style.left = '-90px';
+			first.style.zIndex = 90;
+			second.style.left = '0px';
+			second.style.zIndex = 100;
+			third.style.left = '90px';
+			third.style.zIndex = 90;
+			fourth.style.left = '180px';
+			fourth.style.zIndex = 80;
+			fifth.style.left = '-180px';
+			fifth.style.zIndex = 80;
+
+			setTimeout(() => {
+				console.log(isSliding);
+				const temp = first.cloneNode(true);
+				container.replaceChild(fifth.cloneNode(true), first);
+				container.replaceChild(fourth.cloneNode(true), fifth);
+				container.replaceChild(third.cloneNode(true), fourth);
+				container.replaceChild(second.cloneNode(true), third);
+				container.replaceChild(temp, second);
+			}, 550);
+			setTimeout(() => {
+				setIsSliding(false);
+				console.log(isSliding);
+			}, 600);
+		}
+		// const container = document.querySelector('.container');
+		// if (isSliding) {
+		// 	setIsSliding(false);
+		// 	if (sliderCnt !== 1) {
+		// 		console.log(sliderCnt);
+		// 		container.style.transform = `translateX(${(sliderCnt - 2) * -460}px)`;
+		// 		setSliderCnt(sliderCnt - 1);
+		// 		setTimeout(() => {
+		// 			setIsSliding(true);
+		// 		}, 550);
+		// 	} else {
+		// 		const lastChild = container.lastChild.cloneNode(true);
+		// 		container.prepend(lastChild);
+		// 		container.style.transition = 'none';
+		// 		container.style.transform = `translateX(-460px)`;
+		// 		setSliderCnt(3);
+		// 		setTimeout(() => {
+		// 			container.style.transition = 'inherit';
+		// 			container.style.transform = `translateX(0px)`;
+		// 		}, 50);
+		// 		setTimeout(() => {
+		// 			container.style.transition = 'none';
+		// 			container.style.transform = `translateX(-920px)`;
+		// 			container.removeChild(container.firstChild);
+		// 		}, 500);
+		// 		setTimeout(() => {
+		// 			container.style.transition = 'inherit';
+		// 			setIsSliding(true);
+		// 		}, 550);
+		// 	}
+		// }
+	}
+	return (
+		<div className='homepage-slide'>
+			{/* overflow: 'hidden', */}
+			{/* <div style={{ display: 'flex' }}> */}
+			<input type='button' className='buttonL' onClick={left} style={{ zIndex: 1000 }}></input>
+			<Container />
+			<input type='button' className='buttonR' onClick={right} style={{ zIndex: 1000 }}></input>
+		</div>
+		// </div>
+	);
+}
+
+function Homepage() {
+	return (
+		<div className='homepage'>
+			<Slide />
+		</div>
+	);
+}
+
+export default Homepage;
