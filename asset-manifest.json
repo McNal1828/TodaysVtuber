@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/TodaysVtuber/static/css/main.ee8e5871.css",
+    "main.js": "/TodaysVtuber/static/js/main.9dd6c26c.js",
+    "index.html": "/TodaysVtuber/index.html",
+    "main.ee8e5871.css.map": "/TodaysVtuber/static/css/main.ee8e5871.css.map",
+    "main.9dd6c26c.js.map": "/TodaysVtuber/static/js/main.9dd6c26c.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.ee8e5871.css",
+    "static/js/main.9dd6c26c.js"
+  ]
+}
