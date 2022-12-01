@@ -71,6 +71,9 @@ function Slide() {
 				default:
 					break;
 			}
+
+			const sizeChangeBtn = document.querySelector('.size-change-btn');
+			sizeChangeBtn.checked = false;
 			setSlideCnt((slideCnt + 1) % 5);
 			setTimeout(() => {
 				setIsSliding(false);
@@ -183,6 +186,7 @@ function Slide() {
 			</div>
 			<input type='button' className='buttonR' onClick={right} style={{ zIndex: 1000 }}></input>
 			<input
+				className='size-change-btn'
 				type='checkbox'
 				style={{ position: 'absolute', top: '0px', right: '0px' }}
 				onChange={(e) => {

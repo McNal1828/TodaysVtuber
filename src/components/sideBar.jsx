@@ -67,6 +67,7 @@ function SideBar() {
 				<footer>
 					<li className='mode'>
 						<div className='sun-moon'>
+							{/* TODO 다크모드 설정 해지때 opacity변경하는 css수정해야함  */}
 							<i className='icon sun'>S</i>
 							<i className='icon moon'>M</i>
 						</div>
