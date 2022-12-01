@@ -55,6 +55,12 @@ function SideBar() {
 									<span className='text'>최 신 영 상</span>
 								</NavLink>
 							</li>
+							<li>
+								<NavLink to='/tt2'>
+									<i className='icon'>F</i>
+									<span className='text'>즐 겨 찾 기</span>
+								</NavLink>
+							</li>
 						</ul>
 					</div>
 				</div>

@@ -13,7 +13,6 @@ function App() {
 				<Route path='/' element={<Homepage />}></Route>
 				<Route path='/tt' element={<Main />}></Route>
 			</Routes>
-			<h1>TLqkf</h1>
 		</div>
 	);
 }
