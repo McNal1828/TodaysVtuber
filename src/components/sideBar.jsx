@@ -1,8 +1,28 @@
+import { useEffect, useRef } from 'react';
 import { NavLink } from 'react-router-dom';
 
 function SideBar() {
+	const sidebarR = useRef(null);
+
+	const handleClose = (e) => {
+		let sideArea = sidebarR.current;
+		let sideCildren = sidebarR.current.contains(e.target);
+		console.log(sideArea);
+		console.log(sideCildren);
+
+		if (!sideCildren) {
+			sidebarR.current.classList.add('close');
+		}
+	};
+	useEffect(() => {
+		window.addEventListener('click', handleClose);
+		return () => {
+			window.removeEventListener('click', handleClose);
+		};
+	});
+
 	return (
-		<div className='sidebar close'>
+		<div className='sidebar close' ref={sidebarR}>
 			<header>
 				<div className='image-text'>
 					<div className='image'>
@@ -68,6 +88,9 @@ function SideBar() {
 					<li className='mode'>
 						<div className='sun-moon'>
 							{/* TODO 다크모드 설정 해지때 opacity변경하는 css수정해야함  */}
+							{/* TODO 사이드바 닫앗을때는 --- 열었을때는 로고  */}
+							{/* TODO 뒷배경에 캐릭터삽입  */}
+
 							<i className='icon sun'>S</i>
 							<i className='icon moon'>M</i>
 						</div>

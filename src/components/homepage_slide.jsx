@@ -6,6 +6,7 @@ function Slide() {
 	const thirdR = useRef(null);
 	const fourthR = useRef(null);
 	const fifthR = useRef(null);
+	const sixthR = useRef(null);
 	const refs = [firstR, secondR, thirdR, fourthR, fifthR];
 
 	const [isSliding, setIsSliding] = useState(false);
@@ -14,12 +15,26 @@ function Slide() {
 	const [zl, setZl] = useState([80, 90, 100, 90, 80]);
 	const [sl, setSl] = useState([0.75, 0.9, 1, 0.9, 0.75]);
 	const [bl, setBl] = useState([30, 60, 100, 60, 30]);
-	const list = [
-		{ url: 'https://www.youtube.com/embed/GspDybPhOeY?autoplay=0' },
-		{ url: 'https://www.youtube.com/embed/lttoODN5hOo?autoplay=0' },
-		{ url: 'https://www.youtube.com/embed/h5hMNF3kDm0?autoplay=0' },
-		{ url: 'https://www.youtube.com/embed/NVns4yRoTlU?autoplay=0' },
-		{ url: 'https://www.youtube.com/embed/pBQpwWij1nE?autoplay=0' },
+	const ytList = [
+		{ url: 'https://www.youtube.com/embed/GspDybPhOeY?autoplay=1' },
+		{ url: 'https://www.youtube.com/embed/lttoODN5hOo?autoplay=1' },
+		{ url: 'https://www.youtube.com/embed/h5hMNF3kDm0?autoplay=1' },
+		{ url: 'https://www.youtube.com/embed/NVns4yRoTlU?autoplay=1' },
+		{ url: 'https://www.youtube.com/embed/pBQpwWij1nE?autoplay=1' },
+	];
+	// const thumbList = [
+	// 	{ url: '/images/cheers.gif' },
+	// 	{ url: '/images/cheers2.jpg' },
+	// 	{ url: '/images/cheers3.jpg' },
+	// 	{ url: '/images/cheers4.jpg' },
+	// 	{ url: '/images/cheers5.jpg' },
+	// ];
+	const thumbList = [
+		{ url: 'https://i.ytimg.com/vi/GspDybPhOeY/maxresdefault.jpg' },
+		{ url: 'https://i.ytimg.com/vi/lttoODN5hOo/maxresdefault.jpg' },
+		{ url: 'https://i.ytimg.com/vi/h5hMNF3kDm0/maxresdefault.jpg' },
+		{ url: 'https://i.ytimg.com/vi/NVns4yRoTlU/maxresdefault.jpg' },
+		{ url: 'https://i.ytimg.com/vi/pBQpwWij1nE/maxresdefault.jpg' },
 	];
 
 	function styleText1(n) {
@@ -47,38 +62,61 @@ function Slide() {
 			fourthR.current.style = styleText1(2);
 			fifthR.current.style = styleText1(1);
 
+			sixthR.current.style = 'opacity:0';
 			switch (slideCnt % 5) {
 				case 0:
-					fourthR.current.querySelector('iframe').src = fourthR.current.querySelector('iframe').src.slice(0, -1) + '1';
-					thirdR.current.querySelector('iframe').src = thirdR.current.querySelector('iframe').src.slice(0, -1) + '0';
+					sixthR.current.querySelector('iframe').src = ytList[3].url;
 					break;
 				case 1:
-					fifthR.current.querySelector('iframe').src = fifthR.current.querySelector('iframe').src.slice(0, -1) + '1';
-					fourthR.current.querySelector('iframe').src = fourthR.current.querySelector('iframe').src.slice(0, -1) + '0';
+					sixthR.current.querySelector('iframe').src = ytList[4].url;
 					break;
 				case 2:
-					firstR.current.querySelector('iframe').src = firstR.current.querySelector('iframe').src.slice(0, -1) + '1';
-					fifthR.current.querySelector('iframe').src = fifthR.current.querySelector('iframe').src.slice(0, -1) + '0';
+					sixthR.current.querySelector('iframe').src = ytList[0].url;
 					break;
 				case 3:
-					secondR.current.querySelector('iframe').src = secondR.current.querySelector('iframe').src.slice(0, -1) + '1';
-					firstR.current.querySelector('iframe').src = firstR.current.querySelector('iframe').src.slice(0, -1) + '0';
+					sixthR.current.querySelector('iframe').src = ytList[1].url;
 					break;
 				case 4:
-					thirdR.current.querySelector('iframe').src = thirdR.current.querySelector('iframe').src.slice(0, -1) + '1';
-					secondR.current.querySelector('iframe').src = secondR.current.querySelector('iframe').src.slice(0, -1) + '0';
+					sixthR.current.querySelector('iframe').src = ytList[2].url;
 					break;
 				default:
 					break;
 			}
 
+			// switch (slideCnt % 5) {
+			// 	case 0:
+			// 		fourthR.current.querySelector('iframe').src = fourthR.current.querySelector('iframe').src.slice(0, -1) + '1';
+			// 		thirdR.current.querySelector('iframe').src = thirdR.current.querySelector('iframe').src.slice(0, -1) + '0';
+			// 		break;
+			// 	case 1:
+			// 		fifthR.current.querySelector('iframe').src = fifthR.current.querySelector('iframe').src.slice(0, -1) + '1';
+			// 		fourthR.current.querySelector('iframe').src = fourthR.current.querySelector('iframe').src.slice(0, -1) + '0';
+			// 		break;
+			// 	case 2:
+			// 		firstR.current.querySelector('iframe').src = firstR.current.querySelector('iframe').src.slice(0, -1) + '1';
+			// 		fifthR.current.querySelector('iframe').src = fifthR.current.querySelector('iframe').src.slice(0, -1) + '0';
+			// 		break;
+			// 	case 3:
+			// 		secondR.current.querySelector('iframe').src = secondR.current.querySelector('iframe').src.slice(0, -1) + '1';
+			// 		firstR.current.querySelector('iframe').src = firstR.current.querySelector('iframe').src.slice(0, -1) + '0';
+			// 		break;
+			// 	case 4:
+			// 		thirdR.current.querySelector('iframe').src = thirdR.current.querySelector('iframe').src.slice(0, -1) + '1';
+			// 		secondR.current.querySelector('iframe').src = secondR.current.querySelector('iframe').src.slice(0, -1) + '0';
+			// 		break;
+			// 	default:
+			// 		break;
+			// }
+
 			const sizeChangeBtn = document.querySelector('.size-change-btn');
 			sizeChangeBtn.checked = false;
+
 			setSlideCnt((slideCnt + 1) % 5);
 			setTimeout(() => {
+				sixthR.current.style = 'opacity:1';
 				setIsSliding(false);
 				console.log(isSliding);
-			}, 550);
+			}, 800);
 		}
 	}
 	function left() {
@@ -89,91 +127,143 @@ function Slide() {
 			thirdR.current.style = styleText1(1);
 			fourthR.current.style = styleText1(0);
 			fifthR.current.style = styleText1(4);
+
+			sixthR.current.style = 'opacity:0';
 			switch (slideCnt % 5) {
 				case 0:
-					secondR.current.querySelector('iframe').src = secondR.current.querySelector('iframe').src.slice(0, -1) + '1';
-					thirdR.current.querySelector('iframe').src = thirdR.current.querySelector('iframe').src.slice(0, -1) + '0';
+					sixthR.current.querySelector('iframe').src = ytList[1].url;
 					break;
 				case 1:
-					thirdR.current.querySelector('iframe').src = thirdR.current.querySelector('iframe').src.slice(0, -1) + '1';
-					fourthR.current.querySelector('iframe').src = fourthR.current.querySelector('iframe').src.slice(0, -1) + '0';
+					sixthR.current.querySelector('iframe').src = ytList[2].url;
 					break;
 				case 2:
-					fourthR.current.querySelector('iframe').src = fourthR.current.querySelector('iframe').src.slice(0, -1) + '1';
-					fifthR.current.querySelector('iframe').src = fifthR.current.querySelector('iframe').src.slice(0, -1) + '0';
+					sixthR.current.querySelector('iframe').src = ytList[3].url;
 					break;
 				case 3:
-					fifthR.current.querySelector('iframe').src = fifthR.current.querySelector('iframe').src.slice(0, -1) + '1';
-					firstR.current.querySelector('iframe').src = firstR.current.querySelector('iframe').src.slice(0, -1) + '0';
+					sixthR.current.querySelector('iframe').src = ytList[4].url;
 					break;
 				case 4:
-					firstR.current.querySelector('iframe').src = firstR.current.querySelector('iframe').src.slice(0, -1) + '1';
-					secondR.current.querySelector('iframe').src = secondR.current.querySelector('iframe').src.slice(0, -1) + '0';
+					sixthR.current.querySelector('iframe').src = ytList[0].url;
 					break;
 				default:
 					break;
 			}
+
+			// switch (slideCnt % 5) {
+			// 	case 0:
+			// 		secondR.current.querySelector('iframe').src = secondR.current.querySelector('iframe').src.slice(0, -1) + '1';
+			// 		thirdR.current.querySelector('iframe').src = thirdR.current.querySelector('iframe').src.slice(0, -1) + '0';
+			// 		break;
+			// 	case 1:
+			// 		thirdR.current.querySelector('iframe').src = thirdR.current.querySelector('iframe').src.slice(0, -1) + '1';
+			// 		fourthR.current.querySelector('iframe').src = fourthR.current.querySelector('iframe').src.slice(0, -1) + '0';
+			// 		break;
+			// 	case 2:
+			// 		fourthR.current.querySelector('iframe').src = fourthR.current.querySelector('iframe').src.slice(0, -1) + '1';
+			// 		fifthR.current.querySelector('iframe').src = fifthR.current.querySelector('iframe').src.slice(0, -1) + '0';
+			// 		break;
+			// 	case 3:
+			// 		fifthR.current.querySelector('iframe').src = fifthR.current.querySelector('iframe').src.slice(0, -1) + '1';
+			// 		firstR.current.querySelector('iframe').src = firstR.current.querySelector('iframe').src.slice(0, -1) + '0';
+			// 		break;
+			// 	case 4:
+			// 		firstR.current.querySelector('iframe').src = firstR.current.querySelector('iframe').src.slice(0, -1) + '1';
+			// 		secondR.current.querySelector('iframe').src = secondR.current.querySelector('iframe').src.slice(0, -1) + '0';
+			// 		break;
+			// 	default:
+			// 		break;
+			// }
+
+			const sizeChangeBtn = document.querySelector('.size-change-btn');
+			sizeChangeBtn.checked = false;
+
 			setSlideCnt((slideCnt + 4) % 5);
 			setTimeout(() => {
 				setIsSliding(false);
-				console.log(isSliding);
-			}, 550);
-		}
-	}
-	const sizeVariable = [800 * 0.3, 450 * 0.3];
-	function sizeLarge() {
-		switch (slideCnt % 5) {
-			case 0:
-				thirdR.current.style = styleText1(2) + styleText2(sizeVariable[0], sizeVariable[1]);
-				break;
-			case 1:
-				fourthR.current.style = styleText1(1) + styleText2(sizeVariable[0], sizeVariable[1]);
-				break;
-			case 2:
-				fifthR.current.style = styleText1(0) + styleText2(sizeVariable[0], sizeVariable[1]);
-				break;
-			case 3:
-				firstR.current.style = styleText1(4) + styleText2(sizeVariable[0], sizeVariable[1]);
-				break;
-			case 4:
-				secondR.current.style = styleText1(3) + styleText2(sizeVariable[0], sizeVariable[1]);
-				break;
-			default:
-				break;
-		}
-	}
-	function sizeNormal() {
-		switch (slideCnt % 5) {
-			case 0:
-				thirdR.current.style = styleText1(2) + styleText2(0, 0);
-				break;
-			case 1:
-				fourthR.current.style = styleText1(1) + styleText2(0, 0);
-				break;
-			case 2:
-				fifthR.current.style = styleText1(0) + styleText2(0, 0);
-				break;
-			case 3:
-				firstR.current.style = styleText1(4) + styleText2(0, 0);
-				break;
-			case 4:
-				secondR.current.style = styleText1(3) + styleText2(0, 0);
-				break;
-			default:
-				break;
+
+				sixthR.current.style = 'opacity:1';
+				switch (slideCnt % 5) {
+					case 0:
+						secondR.current.style = secondR.current.style.cssText + 'opacity:0';
+						break;
+					case 1:
+						thirdR.current.style = thirdR.current.style.cssText + 'opacity:0';
+						break;
+					case 2:
+						fourthR.current.style = fourthR.current.style.cssText + 'opacity:0';
+						break;
+					case 3:
+						fifthR.current.style = fifthR.current.style.cssText + 'opacity:0';
+						break;
+					case 4:
+						firstR.current.style = firstR.current.style.cssText + 'opacity : 0;';
+						break;
+					default:
+						break;
+				}
+			}, 800);
 		}
 	}
 
-	const contents_list = list.map((item, index) => {
+	const sizeVariable = [800 * 0.3, 450 * 0.3];
+	function sizeLarge() {
+		sixthR.current.style = styleText2(sizeVariable[0], sizeVariable[1]);
+
+		// switch (slideCnt % 5) {
+		// 	case 0:
+		// 		thirdR.current.style = styleText1(2) + styleText2(sizeVariable[0], sizeVariable[1]);
+		// 		break;
+		// 	case 1:
+		// 		fourthR.current.style = styleText1(1) + styleText2(sizeVariable[0], sizeVariable[1]);
+		// 		break;
+		// 	case 2:
+		// 		fifthR.current.style = styleText1(0) + styleText2(sizeVariable[0], sizeVariable[1]);
+		// 		break;
+		// 	case 3:
+		// 		firstR.current.style = styleText1(4) + styleText2(sizeVariable[0], sizeVariable[1]);
+		// 		break;
+		// 	case 4:
+		// 		secondR.current.style = styleText1(3) + styleText2(sizeVariable[0], sizeVariable[1]);
+		// 		break;
+		// 	default:
+		// 		break;
+		// }
+	}
+	function sizeNormal() {
+		sixthR.current.style = styleText2(0, 0);
+		// switch (slideCnt % 5) {
+		// 	case 0:
+		// 		thirdR.current.style = styleText1(2) + styleText2(0, 0);
+		// 		break;
+		// 	case 1:
+		// 		fourthR.current.style = styleText1(1) + styleText2(0, 0);
+		// 		break;
+		// 	case 2:
+		// 		fifthR.current.style = styleText1(0) + styleText2(0, 0);
+		// 		break;
+		// 	case 3:
+		// 		firstR.current.style = styleText1(4) + styleText2(0, 0);
+		// 		break;
+		// 	case 4:
+		// 		secondR.current.style = styleText1(3) + styleText2(0, 0);
+		// 		break;
+		// 	default:
+		// 		break;
+		// }
+	}
+
+	const contents_list = thumbList.map((item, index) => {
 		return (
 			<div className='contents' key={index} ref={refs[index]}>
-				<iframe
+				{/* <iframe
 					src={item.url}
 					title='YouTube video player'
 					frameBorder='0'
 					allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
 					allowFullScreen
-				></iframe>
+				></iframe> */}
+				{/* <img src={process.env.PUBLIC_URL + item.url} alt='경로이상' /> */}
+				<img src={item.url} alt='경로이상' />
 			</div>
 		);
 	});
@@ -183,6 +273,15 @@ function Slide() {
 			<input type='button' className='buttonL' onClick={left} style={{ zIndex: 1000 }}></input>
 			<div className='container' style={{ zIndex: 10 }}>
 				{contents_list}
+				<div className='contents' ref={sixthR}>
+					<iframe
+						src={ytList[2].url.slice(0, -1) + '0'}
+						title='YouTube video player'
+						frameBorder='0'
+						allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
+						allowFullScreen
+					></iframe>
+				</div>
 			</div>
 			<input type='button' className='buttonR' onClick={right} style={{ zIndex: 1000 }}></input>
 			<input

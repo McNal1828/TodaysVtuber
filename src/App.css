@@ -141,6 +141,8 @@ body.dark {
 }
 .sidebar.close .text {
 	opacity: 0;
+	visibility: hidden;
+	/* display: none; */
 }
 .sidebar .image {
 	min-width: 60px;
@@ -395,6 +397,14 @@ body.dark .sidebar footer .mode .toggle-switch .switch::before {
 	z-index: 80;
 	filter: brightness(30%);
 	transform: scale(0.75);
+	box-shadow: 14px -5px 35px -21px rgba(0, 0, 0, 0.66);
+}
+.homepage .homepage-slide .container .contents:nth-child(6) {
+	width: inherit;
+	height: inherit;
+	position: absolute;
+	z-index: 110;
+	opacity: 1;
 	box-shadow: 14px -5px 35px -21px rgba(0, 0, 0, 0.66);
 }
 .homepage .homepage-slide .container .contents img {
