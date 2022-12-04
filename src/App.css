@@ -90,7 +90,7 @@ video {
 	--body-color: #e4e9f7;
 	--sidebar-color: #ffffff;
 	--sidebar-color-c: rgba(255, 255, 255, 0.5);
-	/* --primary-color: rgb(188, 221, 255); */
+	--component-color: rgba(222, 226, 239, 0.3);
 	--primary-color: hotpink;
 	--primary-color-light: #f6f5ff;
 	--toggle-color: #ddd;
@@ -347,7 +347,7 @@ body.dark .sidebar footer .mode .toggle-switch .switch::before {
 	left: 50%;
 	width: 0px;
 	height: 0px;
-	opacity: 0;
+	display: none;
 }
 
 .search-center {
@@ -424,7 +424,10 @@ body.dark .search-center .search-box .search-results li:hover .text {
 /* =====메인페이지===== */
 
 /* =====홈페이지===== */
-
+.homepage .row {
+	display: flex;
+	justify-content: space-around;
+}
 /* =====홈페이지-슬라이드===== */
 .homepage .homepage-slide {
 	width: calc(100vw - 86px);
@@ -435,7 +438,9 @@ body.dark .search-center .search-box .search-results li:hover .text {
 	position: relative;
 	align-items: center;
 	justify-content: space-between;
-	box-shadow: 14px -5px 35px -21px rgba(0, 0, 0, 0.66);
+	box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+	/* overflow-x: hidden; */
+	/* overflow-y: visible; */
 }
 .homepage .homepage-slide .container {
 	position: relative;
@@ -444,6 +449,7 @@ body.dark .search-center .search-box .search-results li:hover .text {
 	height: var(--slide-container-height);
 	/* background-color: red; */
 	transition: inherit;
+	/* overflow-y: visible; */
 	/* transform: translateX(-920px); */
 }
 .homepage .homepage-slide .container .contents:nth-child(1) {
@@ -505,8 +511,11 @@ body.dark .search-center .search-box .search-results li:hover .text {
 	width: inherit;
 	height: inherit;
 	position: absolute;
+	left: -1px;
+	transition: 0.5s;
 	z-index: 110;
 	opacity: 1;
+	transform: scale(1.01);
 	box-shadow: 14px -5px 35px -21px rgba(0, 0, 0, 0.66);
 }
 .homepage .homepage-slide .container .contents img {
@@ -516,4 +525,82 @@ body.dark .search-center .search-box .search-results li:hover .text {
 .homepage .homepage-slide .container .contents iframe {
 	width: inherit;
 	height: inherit;
+}
+/* =====홈페이지-달력===== */
+.homepage .calender {
+	width: 60vw;
+	background: var(--component-color);
+	padding: 12px 16px;
+	margin: 20px 24px;
+	border-radius: 10px;
+	box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+}
+.homepage .calender .header {
+	display: flex;
+	justify-content: space-between;
+}
+.homepage .calender .dates {
+	display: flex;
+	justify-content: space-evenly;
+}
+.homepage .calender .dates .date {
+	position: relative;
+	display: flex;
+	align-items: center;
+	/* padding-left: 4px; */
+	margin: 3px 6px;
+	width: 8vw;
+	background: rgb(220, 219, 193);
+	border-radius: 6px;
+}
+.homepage .calender .dates .date::before {
+	content: '';
+	position: absolute;
+	height: 1px;
+	left: 1px;
+	width: inherit;
+	border-radius: 50%;
+	top: 110%;
+	background-color: black;
+}
+
+.homepage .calender .days {
+	margin-top: 4px;
+}
+.homepage .calender .days .row {
+	z-index: 1000;
+	display: flex;
+	justify-content: space-evenly;
+}
+.homepage .calender .days .row .day {
+	width: 8vw;
+	min-height: 60px;
+	margin: 3px 3px;
+	background: var(--primary-color-light);
+	border: rgba(0, 0, 0, 0.66) 0.5px solid;
+	border-radius: 4px;
+	box-shadow: 1px 0.5px rgba(0, 0, 0, 0.66);
+}
+.homepage .calender .days .day .text {
+	font-size: 12px;
+}
+.homepage .calender .days .day .contents {
+	width: inherit;
+	white-space: normal;
+}
+/* =====홈페이지-라이브중===== */
+.homepage .livenow {
+	width: 30vw;
+	background: var(--component-color);
+	padding: 12px 16px;
+	margin: 20px 24px;
+	border-radius: 10px;
+	box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+}
+.homepage .livenow .header {
+	width: calc(100% - 40px);
+	background: var(--primary-color-light);
+	padding: 6px 8px;
+	margin: 6px 12px;
+	border-radius: 10px;
 }
