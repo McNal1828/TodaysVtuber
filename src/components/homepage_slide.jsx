@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 function Slide() {
 	const firstR = useRef(null);
@@ -7,7 +7,9 @@ function Slide() {
 	const fourthR = useRef(null);
 	const fifthR = useRef(null);
 	const sixthR = useRef(null);
+	const sevenR = useRef(null);
 	const refs = [firstR, secondR, thirdR, fourthR, fifthR];
+	const slideR = useRef(null);
 
 	const [isSliding, setIsSliding] = useState(false);
 	const [slideCnt, setSlideCnt] = useState(0);
@@ -15,6 +17,8 @@ function Slide() {
 	const [zl, setZl] = useState([80, 90, 100, 90, 80]);
 	const [sl, setSl] = useState([0.75, 0.9, 1, 0.9, 0.75]);
 	const [bl, setBl] = useState([30, 60, 100, 60, 30]);
+	const [windowSize, setWindowSize] = useState([window.innerHeight, window.innerWidth]);
+
 	const ytList = [
 		{ url: 'https://www.youtube.com/embed/GspDybPhOeY?autoplay=1' },
 		{ url: 'https://www.youtube.com/embed/lttoODN5hOo?autoplay=1' },
@@ -22,13 +26,6 @@ function Slide() {
 		{ url: 'https://www.youtube.com/embed/NVns4yRoTlU?autoplay=1' },
 		{ url: 'https://www.youtube.com/embed/pBQpwWij1nE?autoplay=1' },
 	];
-	// const thumbList = [
-	// 	{ url: '/images/cheers.gif' },
-	// 	{ url: '/images/cheers2.jpg' },
-	// 	{ url: '/images/cheers3.jpg' },
-	// 	{ url: '/images/cheers4.jpg' },
-	// 	{ url: '/images/cheers5.jpg' },
-	// ];
 	const thumbList = [
 		{ url: 'https://i.ytimg.com/vi/GspDybPhOeY/maxresdefault.jpg' },
 		{ url: 'https://i.ytimg.com/vi/lttoODN5hOo/maxresdefault.jpg' },
@@ -45,11 +42,12 @@ function Slide() {
 		filter : brightness(${bl[(slideCnt + n) % 5]}%);
 		`;
 	}
-	function styleText2(w, h) {
+	function styleText2(p) {
 		return `
-		width : ${800 + w + 'px'};
-		height : ${450 + h + 'px'};
-		left : ${-w / 2 + 'px'};
+		width : ${100 + p + '%'};
+		height : ${100 + p + '%'};
+		left : ${-p * 2 + '%'};
+		top : ${-p + '%'};
 		`;
 	}
 
@@ -121,6 +119,7 @@ function Slide() {
 	}
 	function left() {
 		if (!isSliding) {
+			console.log('left');
 			setIsSliding(true);
 			firstR.current.style = styleText1(3);
 			secondR.current.style = styleText1(2);
@@ -204,10 +203,10 @@ function Slide() {
 			}, 800);
 		}
 	}
-
-	const sizeVariable = [800 * 0.3, 450 * 0.3];
+	// const sizeVariable = [10, 10];
 	function sizeLarge() {
-		sixthR.current.style = styleText2(sizeVariable[0], sizeVariable[1]);
+		sixthR.current.style = styleText2(10);
+		sevenR.current.style = 'width:200px;height:121.1%;top:-10%;left:101.8%;opacity:1;';
 
 		// switch (slideCnt % 5) {
 		// 	case 0:
@@ -230,7 +229,8 @@ function Slide() {
 		// }
 	}
 	function sizeNormal() {
-		sixthR.current.style = styleText2(0, 0);
+		sixthR.current.style = styleText2(0);
+		sevenR.current.style = 'width:0px;height:100%;top:0%;left:93%;opacity:0;';
 		// switch (slideCnt % 5) {
 		// 	case 0:
 		// 		thirdR.current.style = styleText1(2) + styleText2(0, 0);
@@ -252,6 +252,38 @@ function Slide() {
 		// }
 	}
 
+	useEffect(() => {
+		window.scrollTo(0, 0);
+		function handleWindowResize() {
+			setWindowSize([window.innerHeight, window.innerWidth]);
+		}
+		window.addEventListener('resize', handleWindowResize);
+		return () => {
+			window.removeEventListener('resize', handleWindowResize);
+		};
+	}, []);
+
+	function wheel() {
+		window.scrollTo({
+			top: windowSize[0],
+			behavior: 'smooth',
+		});
+		console.log('tl2kffdjkl');
+	}
+	const preventDefault = (e) => {
+		e.preventDefault();
+	};
+	useEffect(() => {
+		slideR.current.addEventListener('wheel', (e) => {
+			e.preventDefault();
+		});
+		return () => {
+			slideR.current.removeEventListener('wheel', (e) => {
+				e.preventDefault();
+			});
+		};
+	}, [slideR]);
+
 	const contents_list = thumbList.map((item, index) => {
 		return (
 			<div className='contents' key={index} ref={refs[index]}>
@@ -269,7 +301,24 @@ function Slide() {
 	});
 
 	return (
-		<div className='homepage-slide'>
+		<div
+			className='homepage-slide'
+			onWheel={(e) => {
+				if (e.deltaY < 0) {
+					if (!isSliding) {
+						setIsSliding(true);
+						wheel();
+						window.addEventListener('wheel', preventDefault, { passive: false });
+						setTimeout(() => {
+							window.removeEventListener('wheel', preventDefault, { passive: false });
+							setIsSliding(false);
+							// console.log('tt');
+						}, 900);
+					}
+				}
+			}}
+			ref={slideR}
+		>
 			<input type='button' className='buttonL' onClick={left} style={{ zIndex: 1000 }}></input>
 			<div className='container' style={{ zIndex: 10 }}>
 				{contents_list}
@@ -281,6 +330,14 @@ function Slide() {
 						allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
 						allowFullScreen
 					></iframe>
+				</div>
+				<div className='contents' ref={sevenR}>
+					<p className='text'>유루버 아이콘</p>
+					<p className='text'>유루버 이름</p>
+					<p className='text'>영상설명란</p>
+					<p className='text'>원본영상</p>
+					<p className='text'>같은영상소재영상</p>
+					<p className='text'>추천영상</p>
 				</div>
 			</div>
 			<input type='button' className='buttonR' onClick={right} style={{ zIndex: 1000 }}></input>

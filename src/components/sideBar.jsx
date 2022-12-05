@@ -113,7 +113,7 @@ function SideBar() {
 				</div>
 			</div>
 			<div className='search-center'>
-				<div className='search-box' ref={searchR}>
+				<div className='search-box'>
 					<div className='search-bar'>
 						<i
 							className='search-icon icon'
@@ -123,7 +123,7 @@ function SideBar() {
 						>
 							A
 						</i>
-						<input type='search' name='' id='' placeholder='검색어를 입력해주세요' />
+						<input type='search' name='' id='' placeholder='검색어를 입력해주세요' ref={searchR} />
 					</div>
 					<div className='search-results'>
 						<ul>
