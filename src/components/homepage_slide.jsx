@@ -13,6 +13,7 @@ function Slide() {
 
 	const [isSliding, setIsSliding] = useState(false);
 	const [slideCnt, setSlideCnt] = useState(0);
+	const [isBig, setIsBig] = useState(false);
 	const [pl, setPl] = useState([280, 140, 0, -140, -280]);
 	const [zl, setZl] = useState([80, 90, 100, 90, 80]);
 	const [sl, setSl] = useState([0.75, 0.9, 1, 0.9, 0.75]);
@@ -20,11 +21,11 @@ function Slide() {
 	const [windowSize, setWindowSize] = useState([window.innerHeight, window.innerWidth]);
 
 	const ytList = [
-		{ url: 'https://www.youtube.com/embed/GspDybPhOeY?autoplay=1' },
-		{ url: 'https://www.youtube.com/embed/lttoODN5hOo?autoplay=1' },
-		{ url: 'https://www.youtube.com/embed/h5hMNF3kDm0?autoplay=1' },
-		{ url: 'https://www.youtube.com/embed/NVns4yRoTlU?autoplay=1' },
-		{ url: 'https://www.youtube.com/embed/pBQpwWij1nE?autoplay=1' },
+		{ url: 'https://www.youtube-nocookie.com/embed/GspDybPhOeY?autoplay=1' },
+		{ url: 'https://www.youtube-nocookie.com/embed/lttoODN5hOo?autoplay=1' },
+		{ url: 'https://www.youtube-nocookie.com/embed/h5hMNF3kDm0?autoplay=1' },
+		{ url: 'https://www.youtube-nocookie.com/embed/NVns4yRoTlU?autoplay=1' },
+		{ url: 'https://www.youtube-nocookie.com/embed/pBQpwWij1nE?autoplay=1' },
 	];
 	const thumbList = [
 		{ url: 'https://i.ytimg.com/vi/GspDybPhOeY/maxresdefault.jpg' },
@@ -61,25 +62,25 @@ function Slide() {
 			fifthR.current.style = styleText1(1);
 
 			sixthR.current.style = 'opacity:0';
-			switch (slideCnt % 5) {
-				case 0:
-					sixthR.current.querySelector('iframe').src = ytList[3].url;
-					break;
-				case 1:
-					sixthR.current.querySelector('iframe').src = ytList[4].url;
-					break;
-				case 2:
-					sixthR.current.querySelector('iframe').src = ytList[0].url;
-					break;
-				case 3:
-					sixthR.current.querySelector('iframe').src = ytList[1].url;
-					break;
-				case 4:
-					sixthR.current.querySelector('iframe').src = ytList[2].url;
-					break;
-				default:
-					break;
-			}
+			// switch (slideCnt % 5) {
+			// 	case 0:
+			// 		sixthR.current.querySelector('iframe').src = ytList[3].url;
+			// 		break;
+			// 	case 1:
+			// 		sixthR.current.querySelector('iframe').src = ytList[4].url;
+			// 		break;
+			// 	case 2:
+			// 		sixthR.current.querySelector('iframe').src = ytList[0].url;
+			// 		break;
+			// 	case 3:
+			// 		sixthR.current.querySelector('iframe').src = ytList[1].url;
+			// 		break;
+			// 	case 4:
+			// 		sixthR.current.querySelector('iframe').src = ytList[2].url;
+			// 		break;
+			// 	default:
+			// 		break;
+			// }
 
 			// switch (slideCnt % 5) {
 			// 	case 0:
@@ -128,25 +129,25 @@ function Slide() {
 			fifthR.current.style = styleText1(4);
 
 			sixthR.current.style = 'opacity:0';
-			switch (slideCnt % 5) {
-				case 0:
-					sixthR.current.querySelector('iframe').src = ytList[1].url;
-					break;
-				case 1:
-					sixthR.current.querySelector('iframe').src = ytList[2].url;
-					break;
-				case 2:
-					sixthR.current.querySelector('iframe').src = ytList[3].url;
-					break;
-				case 3:
-					sixthR.current.querySelector('iframe').src = ytList[4].url;
-					break;
-				case 4:
-					sixthR.current.querySelector('iframe').src = ytList[0].url;
-					break;
-				default:
-					break;
-			}
+			// switch (slideCnt % 5) {
+			// 	case 0:
+			// 		sixthR.current.querySelector('iframe').src = ytList[1].url;
+			// 		break;
+			// 	case 1:
+			// 		sixthR.current.querySelector('iframe').src = ytList[2].url;
+			// 		break;
+			// 	case 2:
+			// 		sixthR.current.querySelector('iframe').src = ytList[3].url;
+			// 		break;
+			// 	case 3:
+			// 		sixthR.current.querySelector('iframe').src = ytList[4].url;
+			// 		break;
+			// 	case 4:
+			// 		sixthR.current.querySelector('iframe').src = ytList[0].url;
+			// 		break;
+			// 	default:
+			// 		break;
+			// }
 
 			// switch (slideCnt % 5) {
 			// 	case 0:
@@ -206,7 +207,7 @@ function Slide() {
 	// const sizeVariable = [10, 10];
 	function sizeLarge() {
 		sixthR.current.style = styleText2(10);
-		sevenR.current.style = 'width:200px;height:121.1%;top:-10%;left:101.8%;opacity:1;';
+		sevenR.current.style = 'width:200px;height:121.1%;top:-10%;left:101.7%;opacity:1;';
 
 		// switch (slideCnt % 5) {
 		// 	case 0:
@@ -258,30 +259,38 @@ function Slide() {
 			setWindowSize([window.innerHeight, window.innerWidth]);
 		}
 		window.addEventListener('resize', handleWindowResize);
-		return () => {
-			window.removeEventListener('resize', handleWindowResize);
-		};
+		// console.log(windowSize);
+		// return () => {
+		// window.removeEventListener('resize', handleWindowResize);
+		// };
 	}, []);
+
+	useEffect(() => {
+		sixthR.current.querySelector('iframe').src = ytList[(slideCnt + 2) % 5].url;
+		return () => {};
+	}, [slideCnt]);
 
 	function wheel() {
 		window.scrollTo({
 			top: windowSize[0],
 			behavior: 'smooth',
 		});
-		console.log('tl2kffdjkl');
+		// console.log(windowSize[0]);
 	}
 	const preventDefault = (e) => {
 		e.preventDefault();
 	};
 	useEffect(() => {
 		slideR.current.addEventListener('wheel', (e) => {
-			e.preventDefault();
-		});
-		return () => {
-			slideR.current.removeEventListener('wheel', (e) => {
+			if (window.scrollY === 0) {
 				e.preventDefault();
-			});
-		};
+			}
+		});
+		// return () => {
+		// slideR.current.removeEventListener('wheel', (e) => {
+		// 	e.preventDefault();
+		// });
+		// };
 	}, [slideR]);
 
 	const contents_list = thumbList.map((item, index) => {
@@ -304,7 +313,7 @@ function Slide() {
 		<div
 			className='homepage-slide'
 			onWheel={(e) => {
-				if (e.deltaY < 0) {
+				if (e.deltaY > 0 && window.scrollY === 0) {
 					if (!isSliding) {
 						setIsSliding(true);
 						wheel();
@@ -319,7 +328,8 @@ function Slide() {
 			}}
 			ref={slideR}
 		>
-			<input type='button' className='buttonL' onClick={left} style={{ zIndex: 1000 }}></input>
+			<i className='bx bxs-chevron-left buttonL' onClick={left} style={{ zIndex: 1000 }}></i>
+			{/* <input type='button' className='buttonL' onClick={left} style={{ zIndex: 1000 }}></input> */}
 			<div className='container' style={{ zIndex: 10 }}>
 				{contents_list}
 				<div className='contents' ref={sixthR}>
@@ -340,11 +350,12 @@ function Slide() {
 					<p className='text'>추천영상</p>
 				</div>
 			</div>
-			<input type='button' className='buttonR' onClick={right} style={{ zIndex: 1000 }}></input>
-			<input
+			<i className='bx bxs-chevron-right buttonR' onClick={right} style={{ zIndex: 1000 }}></i>
+			{/* <input type='button' className='buttonR' onClick={right} style={{ zIndex: 1000 }}></input> */}
+			{/* <input
 				className='size-change-btn'
-				type='checkbox'
 				style={{ position: 'absolute', top: '0px', right: '0px' }}
+				type='check-box'
 				onChange={(e) => {
 					if (e.target.checked === true) {
 						sizeLarge();
@@ -352,7 +363,23 @@ function Slide() {
 						sizeNormal();
 					}
 				}}
-			/>
+			></input> */}
+			<div className='size-change-btn-cover'>
+				<button
+					className='size-change-btn'
+					onClick={(e) => {
+						if (!isBig) {
+							sizeLarge();
+							setIsBig(true);
+						} else {
+							sizeNormal();
+							setIsBig(false);
+						}
+					}}
+				>
+					상세설명보기
+				</button>
+			</div>
 		</div>
 	);
 }

@@ -1,4 +1,4 @@
-import { addDays, addMonths, endOfMonth, endOfWeek, format, startOfMonth, startOfWeek, subMonths } from 'date-fns';
+import { addDays, addMonths, endOfMonth, endOfWeek, format, getMonth, monthsInYear, startOfMonth, startOfWeek, subMonths } from 'date-fns';
 import { useState } from 'react';
 
 function Calender() {
@@ -11,17 +11,21 @@ function Calender() {
 	let day = weekStart;
 	let days = [];
 	let row = [];
+	let rowCnt = 0;
 	while (day <= weekEnd) {
 		for (let i = 0; i < 7; i++) {
 			row.push(
-				<div className='day'>
+				<div className='day' key={i} style={getMonth(day) !== getMonth(today) ? { filter: 'brightness(50%)' } : {}}>
 					<p className='text'>{format(day, 'd')}</p>
-					<p className='text contents'>하코즈 벨즈 3주년</p>
 				</div>
 			);
 			day = addDays(day, 1);
 		}
-		days.push(<div className='row'>{row}</div>);
+		days.push(
+			<div className='row' key={rowCnt++}>
+				{row}
+			</div>
+		);
 		row = [];
 	}
 

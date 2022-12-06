@@ -29,15 +29,23 @@ function SideBar() {
 			<div className='sidebar close' ref={sidebarR}>
 				<header>
 					<div className='image-text'>
-						<div className='image'>
+						<i
+							className='bx bx-menu icon'
+							onClick={(e) => {
+								const sidebar = document.querySelector('.sidebar');
+								sidebar.classList.toggle('close');
+							}}
+							style={{ fontSize: '30px' }}
+						></i>
+						{/* <div className='image'>
 							<img src={process.env.PUBLIC_URL + '/images/cheers.gif'} alt='로딩실패' />
-						</div>
+						</div> */}
 						<div className='text'>
 							<span className='title'> TodaysVtuber</span>
 							<span className='description'>팬메이드 웹페이지</span>
 						</div>
 					</div>
-					<div
+					{/* <div
 						className='toggle-btn'
 						onClick={(e) => {
 							const sidebar = document.querySelector('.sidebar');
@@ -45,43 +53,67 @@ function SideBar() {
 						}}
 					>
 						V
-					</div>
+					</div> */}
 				</header>
 				<div className='menu-bar'>
 					<div className='menu'>
 						<li className='search-menu'>
-							<i className='search-icon icon'>A</i>
-							<input type='search' name='' id='' placeholder='검색' />
+							<i
+								className='bx bx-search-alt icon'
+								onClick={(e) => {
+									const sidebar = document.querySelector('.sidebar');
+									sidebar.classList.remove('close');
+								}}
+							></i>
+							{/* <i className='search-icon icon'>A</i> */}
+							<span className='text'>search</span>
+							{/* <input type='search' name='' id='' placeholder='검색' /> */}
 						</li>
 						<div className='nav'>
 							<ul className='nav-link'>
 								<li>
 									<NavLink to='/'>
-										<i className='icon'>B</i>
+										<i className='bx bx-home icon'></i>
+										{/* <i className='icon'>B</i> */}
 										<span className='text'>Home</span>
 									</NavLink>
 								</li>
 								<li>
 									<NavLink to='/tt'>
-										<i className='icon'>C</i>
+										<div className='icon' style={{ position: 'relative' }}>
+											<i
+												className='bx bx-pin'
+												style={{ position: 'absolute', top: '-20px', left: '8px', transform: 'rotate(-0.1turn)', fontSize: '18px' }}
+											></i>
+											<i className='bx bxs-videos' style={{ position: 'absolute', fontSize: '25px' }}></i>
+										</div>
+										{/* <i className='icon'>C</i> */}
 										<span className='text'>키 리 누 커</span>
 									</NavLink>
 								</li>
 								<li>
 									<NavLink to='/tt1'>
-										<i className='icon'>D</i>
+										<div className='icon' style={{ position: 'relative' }}>
+											<i className='bx bxl-vuejs' style={{ position: 'absolute', top: '-15px' }}></i>
+											<div style={{ position: 'absolute', width: '10px', height: '10px', backgroundColor: 'white' }}></div>
+											<i className='bx bxl-youtube icon' style={{ position: 'absolute', fontSize: '25px' }}></i>
+										</div>
+
+										{/* <i className='icon'>D</i> */}
 										<span className='text'>Vtuber</span>
 									</NavLink>
 								</li>
 								<li>
 									<NavLink to='/tt2'>
-										<i className='icon'>E</i>
+										<i className='bx bx-message-square-add icon'></i>
+										{/* <i className='icon'>E</i> */}
 										<span className='text'>최 신 영 상</span>
 									</NavLink>
 								</li>
 								<li>
 									<NavLink to='/tt2'>
-										<i className='icon'>F</i>
+										<i className='bx bx-star icon'></i>
+										{/* <i className='icon'>F</i> */}
 										<span className='text'>즐 겨 찾 기</span>
 									</NavLink>
 								</li>
@@ -91,12 +123,10 @@ function SideBar() {
 					<footer>
 						<li className='mode'>
 							<div className='sun-moon'>
-								{/* TODO 다크모드 설정 해지때 opacity변경하는 css수정해야함  */}
-								{/* TODO 사이드바 닫앗을때는 --- 열었을때는 로고  */}
-								{/* TODO 뒷배경에 캐릭터삽입  */}
-
-								<i className='icon sun'>S</i>
-								<i className='icon moon'>M</i>
+								<i className='bx bx-sun icon'></i>
+								<i className='bx bx-moon icon'></i>
+								{/* <i className='icon sun'>S</i> */}
+								{/* <i className='icon moon'>M</i> */}
 							</div>
 							<span className='text'>Dark Mode </span>
 							<div
@@ -115,14 +145,7 @@ function SideBar() {
 			<div className='search-center'>
 				<div className='search-box'>
 					<div className='search-bar'>
-						<i
-							className='search-icon icon'
-							onClick={(e) => {
-								alert('tlqkf');
-							}}
-						>
-							A
-						</i>
+						<i className='bx bx-search icon'></i>
 						<input type='search' name='' id='' placeholder='검색어를 입력해주세요' ref={searchR} />
 					</div>
 					<div className='search-results'>
