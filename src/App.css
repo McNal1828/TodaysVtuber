@@ -430,10 +430,11 @@ body.dark .search-center .search-box .search-results li:hover .text {
 /* =====메인페이지===== */
 
 /* =====홈페이지===== */
-.homepage .row {
+.homepage .section-row {
 	width: 100%;
 	display: flex;
-	justify-content: space-around;
+	flex-wrap: wrap;
+	justify-content: space-evenly;
 	/* overflow-x: hidden; */
 }
 /* =====홈페이지-슬라이드===== */
@@ -457,7 +458,8 @@ body.dark .search-center .search-box .search-results li:hover .text {
 	/* width: var(--slide-container-width);
 	height: var(--slide-container-height); */
 	width: 63%;
-	min-width: 600px;
+	min-width: 800px;
+	min-height: 450px;
 	height: 70%;
 	/* width: 47%;
 	min-width: 600px;
@@ -546,15 +548,16 @@ body.dark .search-center .search-box .search-results li:hover .text {
 	transition: 0.5s;
 	z-index: 110;
 	opacity: 0;
-	background-color: red;
+	background: var(--sidebar-color);
 	transform: scale(1.01);
 	box-shadow: 14px -5px 35px -21px rgba(0, 0, 0, 0.66);
+	overflow: auto;
 }
-.homepage .homepage-slide .container .contents img {
+.homepage .homepage-slide .container .contents .slide-thumb {
 	width: inherit;
 	height: inherit;
 }
-.homepage .homepage-slide .container .contents iframe {
+.homepage .homepage-slide .container .contents .slide-youtube {
 	width: inherit;
 	height: inherit;
 }
@@ -631,56 +634,62 @@ body.dark .search-center .search-box .search-results li:hover .text {
 	top: 0;
 	border-radius: 10px;
 }
-
+.homepage .homepage-slide .goingDown {
+	position: absolute;
+	right: 50%;
+	bottom: 20px;
+	font-size: 50px;
+}
 /* =====홈페이지-달력===== */
-.homepage .calender {
+.calender {
 	width: 50vw;
-	background: var(--component-color);
+	min-width: 600px;
+	/* background: var(--component-color); */
+	background: rgb(206, 215, 231);
 	padding: 12px 16px;
 	margin: 20px 24px;
 	border-radius: 10px;
 	box-shadow: var(--shadow-component);
 }
-.homepage .calender .header {
+.calender .header {
 	display: flex;
 	justify-content: space-between;
 }
-.homepage .calender .dates {
+.calender .dates {
 	display: flex;
 	justify-content: space-evenly;
 }
-.homepage .calender .dates .date {
+.calender .dates .date {
 	position: relative;
 	display: flex;
 	align-items: center;
 	/* padding-left: 4px; */
 	margin: 3px 3px;
 	padding-left: 4px;
-	width: 8vw;
+	width: 16%;
 	background: rgb(220, 219, 193);
 	border-radius: 6px;
 }
-.homepage .calender .dates .date::before {
+.calender .dates .date::before {
 	content: '';
 	position: absolute;
 	height: 1px;
 	left: 1px;
-	width: 6.5vw;
+	width: 100%;
 	border-radius: 50%;
-	top: 110%;
+	top: 120%;
 	background-color: black;
 }
-
-.homepage .calender .days {
+.calender .days {
 	margin-top: 4px;
 }
-.homepage .calender .days .row {
+.calender .days .row {
 	z-index: 1000;
 	display: flex;
 	justify-content: space-evenly;
 }
-.homepage .calender .days .row .day {
-	width: 8vw;
+.calender .days .row .day {
+	width: 16%;
 	min-height: 60px;
 	margin: 3px 3px;
 	padding-left: 4px;
@@ -689,82 +698,192 @@ body.dark .search-center .search-box .search-results li:hover .text {
 	border-radius: 4px;
 	box-shadow: 1px 0.5px rgba(0, 0, 0, 0.66);
 }
-.homepage .calender .days .day .text {
+.calender .days .day .text {
 	font-size: 12px;
 }
-.homepage .calender .days .day .contents {
+.calender .days .day .contents {
 	width: inherit;
 	white-space: normal;
 }
 /* =====홈페이지-라이브중===== */
-.homepage .livenow {
+.livenow {
 	width: 35vw;
+	min-width: 600px;
 	background: var(--component-color);
 	padding: 12px 16px;
 	margin: 20px 24px;
 	border-radius: 10px;
 	box-shadow: var(--shadow-component);
 }
-.homepage .livenow .header {
+.livenow .header {
 	width: calc(100% - 40px);
 	background: var(--primary-color-light);
 	padding: 6px 8px;
 	margin: 6px 12px;
 	border-radius: 10px;
 }
-
-/* =========================================================== */
-.testlarge {
-	margin: 10px 13px;
+.livenow .header .text {
+	font-size: 17px;
+	padding-left: 5px;
+}
+.livenow .live-list {
 	display: flex;
-	justify-content: space-evenly;
-	width: calc(100vw - 110px);
-	height: 250px;
-	background: #d9d9d9;
-	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-	border-radius: 20px;
+	flex-wrap: wrap;
+	width: calc(inherit);
+	height: calc(inherit);
+	padding: 10px 15px;
+	/* background-color: blue; */
 }
-.testsmall {
-	position: relative;
-	width: 330px;
-	height: 220px;
-	margin-top: 15px;
-	margin-bottom: 15px;
-	background: #fffdfd;
-	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-	border-radius: 5px;
-}
-.testthumb {
-	position: absolute;
-	width: 90%;
-	height: 65%;
-	left: 5%;
-	top: 5%;
-	background: #d9d9d9;
-	border-radius: 21px;
-}
-.testtitle {
-	position: absolute;
-	width: 75%;
-	height: 14%;
-	left: 20%;
-	top: 75%;
-	background: #d9d9d9;
-}
-.testname {
-	position: absolute;
-	width: 75%;
-	height: 7%;
-	left: 20%;
-	top: 90%;
-	background: #d9d9d9;
-}
-.testicon {
-	position: absolute;
-	width: 12%;
-	height: 18%;
-	left: 5%;
-	top: 77%;
+.ytb-icon {
+	width: 74px;
+	height: 74px;
+	/* border: #111 1px solid; */
 	border-radius: 50%;
-	background: #d9d9d9;
+	margin: 5px 8px;
+	overflow: hidden;
+	box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+	/* background-color: red; */
+}
+.ytb-icon img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+.main-description .ytb-description {
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+	width: 90%;
+	align-items: center;
+	justify-content: center;
+	margin: 13px 5%;
+	box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px, rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
+}
+.main-description .ytb-description .ytb-detail {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin-bottom: 5px;
+}
+.main-description .ytb-description .ytb-detail .text {
+	font-weight: 900;
+	font-size: 20px;
+}
+.main-description .ytb-description .ytb-btns {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin: 5px 0;
+}
+.sub-btn {
+	margin: 0px 5px;
+	background: #e62143;
+	border-radius: 8px;
+	box-sizing: border-box;
+	color: #fff;
+	cursor: pointer;
+	display: flex;
+	font-family: Mija, -apple-system, BlinkMacSystemFont, Roboto, 'Roboto Slab', 'Droid Serif', 'Segoe UI', system-ui, Arial, sans-serif;
+	font-size: 15px;
+	font-weight: 700;
+	justify-content: center;
+	line-height: 30px;
+	padding: 2px 4px;
+	text-align: center;
+	text-decoration: none;
+	text-decoration-skip-ink: auto;
+	text-shadow: rgba(0, 0, 0, 0.3) 1px 1px 1px;
+	text-underline-offset: 1px;
+	transition: all 0.2s ease-in-out;
+	user-select: none;
+	-webkit-user-select: none;
+	touch-action: manipulation;
+	width: 60px;
+	word-break: break-word;
+	border: 0;
+}
+
+.sub-btn:active,
+.sub-btn:focus {
+	border-bottom-style: none;
+	border-color: #dadada;
+	box-shadow: rgba(0, 0, 0, 0.3) 0 3px 3px inset;
+	outline: 0;
+}
+
+.sub-btn:hover {
+	border-bottom-style: none;
+	border-color: #dadada;
+}
+.sub-btn a {
+	text-decoration: none;
+	color: #fff;
+}
+.main-description .video-description {
+	font-size: 11px;
+	width: 90%;
+	white-space: pre-wrap;
+	word-wrap: break-all;
+	height: 160px;
+	overflow: hidden;
+}
+.main-description .video-description.open {
+	height: auto;
+}
+.main-description .description-cell {
+	width: 90%;
+	height: auto;
+	margin: 5px 5%;
+	padding: 3px 0;
+	box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px, rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
+}
+.main-description .description-cell .text {
+	margin: 0px 5px;
+}
+
+.main-description .original-video {
+	margin: 3px 5px;
+}
+
+.youtube-section-no-icon {
+	display: flex;
+	width: 95%;
+	height: 120px;
+	margin: 2% 2%;
+	background-color: rgb(255, 0, 0);
+}
+.youtube-section-no-icon .thumb {
+	width: 50%;
+	height: 90%;
+	margin: 2.5% 2%;
+	background-color: blue;
+	overflow: hidden;
+}
+
+.youtube-section-no-icon .thumb img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+.youtube-section-no-icon .detail {
+	display: flex;
+	width: 43%;
+	height: 90%;
+	margin: 2.5% 1%;
+	flex-direction: column;
+	justify-content: space-between;
+	background-color: green;
+}
+
+.youtube-section-no-icon .title {
+	display: flex;
+	width: 100%;
+	height: 70%;
+	background-color: yellow;
+}
+.youtube-section-no-icon .name {
+	width: 100%;
+	height: 25%;
+	background-color: #00ffd5;
 }
