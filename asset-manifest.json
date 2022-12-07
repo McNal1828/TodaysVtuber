@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/TodaysVtuber/static/css/main.d9a8ab7a.css",
-    "main.js": "/TodaysVtuber/static/js/main.42bb7438.js",
+    "main.css": "/TodaysVtuber/static/css/main.385a8695.css",
+    "main.js": "/TodaysVtuber/static/js/main.603ae6c8.js",
     "index.html": "/TodaysVtuber/index.html",
-    "main.d9a8ab7a.css.map": "/TodaysVtuber/static/css/main.d9a8ab7a.css.map",
-    "main.42bb7438.js.map": "/TodaysVtuber/static/js/main.42bb7438.js.map"
+    "main.385a8695.css.map": "/TodaysVtuber/static/css/main.385a8695.css.map",
+    "main.603ae6c8.js.map": "/TodaysVtuber/static/js/main.603ae6c8.js.map"
   },
   "entrypoints": [
-    "static/css/main.d9a8ab7a.css",
-    "static/js/main.42bb7438.js"
+    "static/css/main.385a8695.css",
+    "static/js/main.603ae6c8.js"
   ]
 }
