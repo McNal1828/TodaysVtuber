@@ -260,7 +260,7 @@ function Slide() {
 			link: 'https://www.youtube.com/watch?v=DPEtmqvaKqY',
 			thumb: 'https://i.ytimg.com/vi/DPEtmqvaKqY/maxresdefault.jpg',
 			title: '[MV] 팬서비스( ファンサ ) COVER by 고세구',
-			name: '고세구 GOSEGU',
+			name: '고세구 GOSEGUUUUUUUU',
 		});
 	}
 
@@ -316,7 +316,9 @@ function Slide() {
 						</div>
 					</div>
 					<div className='description-cell'>
-						<pre className='text video-description'>{videoDescription}</pre>
+						<div className='text'>
+							<pre className='video-description'>{videoDescription}</pre>
+						</div>
 						<p
 							className='text'
 							onClick={(e) => {
@@ -329,83 +331,200 @@ function Slide() {
 					</div>
 					<div className='description-cell'>
 						<p className='text'>원본영상</p>
-						<div className='youtube-section-no-icon'>
+						<div
+							className='youtube-section-no-icon'
+							onClick={(e) => {
+								window.open(originalVideo.link, 'blank');
+							}}
+						>
 							<div className='thumb'>
 								<img src={originalVideo.thumb} alt='경로이상' />
 							</div>
 							<div className='detail'>
-								<div className='title'></div>
-								<div className='name'></div>
+								<div className='title'>
+									<p className='text'>{originalVideo.title}</p>
+								</div>
+								<div className='name'>
+									<p className='text'>{originalVideo.name}</p>
+								</div>
 							</div>
 						</div>
 					</div>
 					<div className='description-cell'>
 						<p className='text'>관련 Vtuber</p>
+						<div className='ytb-icon-list'>
+							<div className='ytb-icon'>
+								<img
+									src='https://yt3.ggpht.com/ytc/AMLnZu8ofVKsVwxjdBgpmzWN4QyGjzDl7PX1O3FZ_EmsEg=s800-c-k-c0x00ffffff-no-rj-mo'
+									alt='경로이상'
+								/>
+							</div>
+							<div className='ytb-icon'>
+								<img
+									src='https://yt3.ggpht.com/ytc/AMLnZu8ofVKsVwxjdBgpmzWN4QyGjzDl7PX1O3FZ_EmsEg=s800-c-k-c0x00ffffff-no-rj-mo'
+									alt='경로이상'
+								/>
+							</div>
+							<div className='ytb-icon'>
+								<img
+									src='https://yt3.ggpht.com/ytc/AMLnZu8ofVKsVwxjdBgpmzWN4QyGjzDl7PX1O3FZ_EmsEg=s800-c-k-c0x00ffffff-no-rj-mo'
+									alt='경로이상'
+								/>
+							</div>
+						</div>
 					</div>
 
 					<div className='description-cell'>
-						<p className='text'>동일원본</p>
-						<div className='youtube-section-no-icon'>
-							<div className='thumb'></div>
+						<p className='text'>관련클립</p>
+						<div
+							className='youtube-section-no-icon'
+							onClick={(e) => {
+								window.open(originalVideo.link, 'blank');
+							}}
+						>
+							<div className='thumb'>
+								<img src={originalVideo.thumb} alt='경로이상' />
+							</div>
 							<div className='detail'>
-								<div className='title'></div>
-								<div className='name'></div>
+								<div className='title'>
+									<p className='text'>{originalVideo.title}</p>
+								</div>
+								<div className='name'>
+									<p className='text'>{originalVideo.name}</p>
+								</div>
 							</div>
 						</div>
-						<div className='youtube-section-no-icon'>
-							<div className='thumb'></div>
+						<div
+							className='youtube-section-no-icon'
+							onClick={(e) => {
+								window.open(originalVideo.link, 'blank');
+							}}
+						>
+							<div className='thumb'>
+								<img src={originalVideo.thumb} alt='경로이상' />
+							</div>
 							<div className='detail'>
-								<div className='title'></div>
-								<div className='name'></div>
+								<div className='title'>
+									<p className='text'>{originalVideo.title}</p>
+								</div>
+								<div className='name'>
+									<p className='text'>{originalVideo.name}</p>
+								</div>
 							</div>
 						</div>
 					</div>
 
-					<div className='description-cell'>
+					{/* <div className='description-cell'>
 						<p className='text'>추천영상</p>
-						<div className='youtube-section-no-icon'>
-							<div className='thumb'></div>
+						<div
+							className='youtube-section-no-icon'
+							onClick={(e) => {
+								window.open(originalVideo.link, 'blank');
+							}}
+						>
+							<div className='thumb'>
+								<img src={originalVideo.thumb} alt='경로이상' />
+							</div>
 							<div className='detail'>
-								<div className='title'></div>
-								<div className='name'></div>
+								<div className='title'>
+									<p className='text'>{originalVideo.title}</p>
+								</div>
+								<div className='name'>
+									<p className='text'>{originalVideo.name}</p>
+								</div>
 							</div>
 						</div>
-						<div className='youtube-section-no-icon'>
-							<div className='thumb'></div>
+						<div
+							className='youtube-section-no-icon'
+							onClick={(e) => {
+								window.open(originalVideo.link, 'blank');
+							}}
+						>
+							<div className='thumb'>
+								<img src={originalVideo.thumb} alt='경로이상' />
+							</div>
 							<div className='detail'>
-								<div className='title'></div>
-								<div className='name'></div>
+								<div className='title'>
+									<p className='text'>{originalVideo.title}</p>
+								</div>
+								<div className='name'>
+									<p className='text'>{originalVideo.name}</p>
+								</div>
 							</div>
 						</div>
-						<div className='youtube-section-no-icon'>
-							<div className='thumb'></div>
+						<div
+							className='youtube-section-no-icon'
+							onClick={(e) => {
+								window.open(originalVideo.link, 'blank');
+							}}
+						>
+							<div className='thumb'>
+								<img src={originalVideo.thumb} alt='경로이상' />
+							</div>
 							<div className='detail'>
-								<div className='title'></div>
-								<div className='name'></div>
+								<div className='title'>
+									<p className='text'>{originalVideo.title}</p>
+								</div>
+								<div className='name'>
+									<p className='text'>{originalVideo.name}</p>
+								</div>
 							</div>
 						</div>
-						<div className='youtube-section-no-icon'>
-							<div className='thumb'></div>
+						<div
+							className='youtube-section-no-icon'
+							onClick={(e) => {
+								window.open(originalVideo.link, 'blank');
+							}}
+						>
+							<div className='thumb'>
+								<img src={originalVideo.thumb} alt='경로이상' />
+							</div>
 							<div className='detail'>
-								<div className='title'></div>
-								<div className='name'></div>
+								<div className='title'>
+									<p className='text'>{originalVideo.title}</p>
+								</div>
+								<div className='name'>
+									<p className='text'>{originalVideo.name}</p>
+								</div>
 							</div>
 						</div>
-						<div className='youtube-section-no-icon'>
-							<div className='thumb'></div>
+						<div
+							className='youtube-section-no-icon'
+							onClick={(e) => {
+								window.open(originalVideo.link, 'blank');
+							}}
+						>
+							<div className='thumb'>
+								<img src={originalVideo.thumb} alt='경로이상' />
+							</div>
 							<div className='detail'>
-								<div className='title'></div>
-								<div className='name'></div>
+								<div className='title'>
+									<p className='text'>{originalVideo.title}</p>
+								</div>
+								<div className='name'>
+									<p className='text'>{originalVideo.name}</p>
+								</div>
 							</div>
 						</div>
-						<div className='youtube-section-no-icon'>
-							<div className='thumb'></div>
+						<div
+							className='youtube-section-no-icon'
+							onClick={(e) => {
+								window.open(originalVideo.link, 'blank');
+							}}
+						>
+							<div className='thumb'>
+								<img src={originalVideo.thumb} alt='경로이상' />
+							</div>
 							<div className='detail'>
-								<div className='title'></div>
-								<div className='name'></div>
+								<div className='title'>
+									<p className='text'>{originalVideo.title}</p>
+								</div>
+								<div className='name'>
+									<p className='text'>{originalVideo.name}</p>
+								</div>
 							</div>
 						</div>
-					</div>
+					</div> */}
 				</div>
 			</div>
 			<i className='bx bxs-chevron-right buttonR' onClick={right} style={{ zIndex: 1000 }}></i>

@@ -82,21 +82,24 @@ function SideBar() {
 									<NavLink to='/tt'>
 										<div className='icon' style={{ position: 'relative' }}>
 											<i
-												className='bx bx-pin'
-												style={{ position: 'absolute', top: '-20px', left: '8px', transform: 'rotate(-0.1turn)', fontSize: '18px' }}
+												className='bx bx-cut'
+												style={{ position: 'absolute', top: '-20px', left: '6px', transform: 'rotate(0.1turn)', fontSize: '18px' }}
 											></i>
 											<i className='bx bxs-videos' style={{ position: 'absolute', fontSize: '25px' }}></i>
 										</div>
 										{/* <i className='icon'>C</i> */}
-										<span className='text'>키 리 누 커</span>
+										<span className='text'>클 립 퍼</span>
 									</NavLink>
 								</li>
 								<li>
 									<NavLink to='/tt1'>
 										<div className='icon' style={{ position: 'relative' }}>
-											<i className='bx bxl-vuejs' style={{ position: 'absolute', top: '-15px' }}></i>
-											<div style={{ position: 'absolute', width: '10px', height: '10px', backgroundColor: 'white' }}></div>
-											<i className='bx bxl-youtube icon' style={{ position: 'absolute', fontSize: '25px' }}></i>
+											<i className='bx bxl-vimeo' style={{ position: 'absolute', top: '-18px', left: '8px', fontSize: '25px' }}></i>
+											{/* <div style={{ position: 'absolute', width: '10px', height: '10px', backgroundColor: 'white' }}></div> */}
+											<i
+												className='bx bxl-youtube icon'
+												style={{ position: 'absolute', top: '-12px', left: '5px', fontSize: '26px' }}
+											></i>
 										</div>
 
 										{/* <i className='icon'>D</i> */}
@@ -112,6 +115,17 @@ function SideBar() {
 								</li>
 								<li>
 									<NavLink to='/tt2'>
+										{/* <div className='icon' style={{ position: 'relative' }}>
+											<i
+												className='bx bx-wifi-2'
+												style={{ position: 'absolute', transform: 'rotate(0.25turn)', top: '0px', left: '16px', fontSize: '25px' }}
+											></i>
+											<i
+												className='bx bx-wifi-2'
+												style={{ position: 'absolute', transform: 'rotate(0.75turn)', top: '0px', left: '0px', fontSize: '25px' }}
+											></i>
+											<i class='bx bxs-circle' style={{ position: 'absolute', top: '7.5px', left: '15.5px', fontSize: '10px' }}></i>
+										</div> */}
 										<i className='bx bx-star icon'></i>
 										{/* <i className='icon'>F</i> */}
 										<span className='text'>즐 겨 찾 기</span>
