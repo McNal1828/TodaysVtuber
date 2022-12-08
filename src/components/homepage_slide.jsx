@@ -10,7 +10,9 @@ function Slide() {
 	const sevenR = useRef(null);
 	const refs = [firstR, secondR, thirdR, fourthR, fifthR];
 	const slideR = useRef(null);
+	const liveContainer = useRef(null);
 
+	const [liveContainerCnt, setliveContainerCnt] = useState(1);
 	const [isSliding, setIsSliding] = useState(false);
 	const [slideCnt, setSlideCnt] = useState(0);
 	const [isBig, setIsBig] = useState(false);
@@ -28,8 +30,23 @@ function Slide() {
 	const [originalVideo, setOriginalVideo] = useState({});
 	const [sameOthers, setSameOthers] = useState([]);
 	const [VtuberRelated, setVtuberRelated] = useState([]);
-	const [videoRelated, setVideoRelated] = useState([]);
 
+	const liveOnMark = () => {
+		var cc = '#FF3636';
+		return (
+			<div className='icon' style={{ position: 'relative', left: '23.3%', top: '63%' }}>
+				<i
+					className='bx bx-wifi-2'
+					style={{ position: 'absolute', transform: 'rotate(0.25turn)', top: '3px', left: '18px', fontSize: '20px', color: cc }}
+				></i>
+				<i
+					className='bx bx-wifi-2'
+					style={{ position: 'absolute', transform: 'rotate(0.75turn)', top: '3px', left: '4px', fontSize: '20px', color: cc }}
+				></i>
+				<i className='bx bxs-circle' style={{ position: 'absolute', top: '8.5px', left: '16px', fontSize: '1px', color: cc }}></i>
+			</div>
+		);
+	};
 	const ytList = [
 		{ url: 'https://www.youtube-nocookie.com/embed/GspDybPhOeY?autoplay=1' },
 		{ url: 'https://www.youtube-nocookie.com/embed/lttoODN5hOo?autoplay=1' },
@@ -141,6 +158,14 @@ function Slide() {
 				}
 			}, 800);
 		}
+	}
+	function liveRight() {
+		liveContainer.current.style.transform = `translateX(${-450 * liveContainerCnt}px)`;
+		setliveContainerCnt(liveContainerCnt + 1);
+	}
+	function liveLeft() {
+		liveContainer.current.style.transform = `translateX(${-450 * (liveContainerCnt - 2)}px)`;
+		setliveContainerCnt(liveContainerCnt - 1);
 	}
 	function sizeLarge() {
 		sixthR.current.style = styleText2(10);
@@ -325,6 +350,7 @@ function Slide() {
 								document.querySelector('.video-description').classList.toggle('open');
 								isOpen ? setIsOpen(false) : setIsOpen(true);
 							}}
+							style={{ cursor: 'pointer' }}
 						>
 							{!isOpen ? '더보기...' : ' 간략히...'}
 						</p>
@@ -413,118 +439,6 @@ function Slide() {
 							</div>
 						</div>
 					</div>
-
-					{/* <div className='description-cell'>
-						<p className='text'>추천영상</p>
-						<div
-							className='youtube-section-no-icon'
-							onClick={(e) => {
-								window.open(originalVideo.link, 'blank');
-							}}
-						>
-							<div className='thumb'>
-								<img src={originalVideo.thumb} alt='경로이상' />
-							</div>
-							<div className='detail'>
-								<div className='title'>
-									<p className='text'>{originalVideo.title}</p>
-								</div>
-								<div className='name'>
-									<p className='text'>{originalVideo.name}</p>
-								</div>
-							</div>
-						</div>
-						<div
-							className='youtube-section-no-icon'
-							onClick={(e) => {
-								window.open(originalVideo.link, 'blank');
-							}}
-						>
-							<div className='thumb'>
-								<img src={originalVideo.thumb} alt='경로이상' />
-							</div>
-							<div className='detail'>
-								<div className='title'>
-									<p className='text'>{originalVideo.title}</p>
-								</div>
-								<div className='name'>
-									<p className='text'>{originalVideo.name}</p>
-								</div>
-							</div>
-						</div>
-						<div
-							className='youtube-section-no-icon'
-							onClick={(e) => {
-								window.open(originalVideo.link, 'blank');
-							}}
-						>
-							<div className='thumb'>
-								<img src={originalVideo.thumb} alt='경로이상' />
-							</div>
-							<div className='detail'>
-								<div className='title'>
-									<p className='text'>{originalVideo.title}</p>
-								</div>
-								<div className='name'>
-									<p className='text'>{originalVideo.name}</p>
-								</div>
-							</div>
-						</div>
-						<div
-							className='youtube-section-no-icon'
-							onClick={(e) => {
-								window.open(originalVideo.link, 'blank');
-							}}
-						>
-							<div className='thumb'>
-								<img src={originalVideo.thumb} alt='경로이상' />
-							</div>
-							<div className='detail'>
-								<div className='title'>
-									<p className='text'>{originalVideo.title}</p>
-								</div>
-								<div className='name'>
-									<p className='text'>{originalVideo.name}</p>
-								</div>
-							</div>
-						</div>
-						<div
-							className='youtube-section-no-icon'
-							onClick={(e) => {
-								window.open(originalVideo.link, 'blank');
-							}}
-						>
-							<div className='thumb'>
-								<img src={originalVideo.thumb} alt='경로이상' />
-							</div>
-							<div className='detail'>
-								<div className='title'>
-									<p className='text'>{originalVideo.title}</p>
-								</div>
-								<div className='name'>
-									<p className='text'>{originalVideo.name}</p>
-								</div>
-							</div>
-						</div>
-						<div
-							className='youtube-section-no-icon'
-							onClick={(e) => {
-								window.open(originalVideo.link, 'blank');
-							}}
-						>
-							<div className='thumb'>
-								<img src={originalVideo.thumb} alt='경로이상' />
-							</div>
-							<div className='detail'>
-								<div className='title'>
-									<p className='text'>{originalVideo.title}</p>
-								</div>
-								<div className='name'>
-									<p className='text'>{originalVideo.name}</p>
-								</div>
-							</div>
-						</div>
-					</div> */}
 				</div>
 			</div>
 			<i className='bx bxs-chevron-right buttonR' onClick={right} style={{ zIndex: 1000 }}></i>
@@ -548,6 +462,92 @@ function Slide() {
 			</div>
 			<div className='goingDown'>
 				<i className='bx bxs-chevrons-down bx-fade-down'></i>
+			</div>
+			<div className='live-on'>
+				<i className='bx bxs-chevron-left live-buttonL' onClick={liveLeft} style={{ zIndex: 900 }}></i>
+				<div className='live-container-wrap'>
+					<div className='live-container' ref={liveContainer}>
+						<div className='ytb-icon-list'>
+							<div className='ytb-icon'>
+								{liveOnMark()}
+								<img
+									className='live'
+									src='https://yt3.ggpht.com/ytc/AMLnZu8ofVKsVwxjdBgpmzWN4QyGjzDl7PX1O3FZ_EmsEg=s800-c-k-c0x00ffffff-no-rj-mo'
+									alt='경로이상'
+								/>
+							</div>
+							<div className='ytb-icon'>
+								{liveOnMark()}
+								<img
+									className='live'
+									src='https://yt3.ggpht.com/AIoO_0IdKYBdzlcRQ85oZxMaTBj_RVDvP8QmTmJZoOO_TTJd5NXql17hDfIl_bvcTQ4aAqFGIA=s800-c-k-c0x00ffffff-no-rj'
+									alt='경로이상'
+								/>
+							</div>
+							<div className='ytb-icon'>
+								{liveOnMark()}
+								<img
+									className='live'
+									src='https://yt3.ggpht.com/ytc/AMLnZu-qIRWBQWhOxBeYS5gd5H-sqys1F6EPAmqCW1Q6HQ=s800-c-k-c0x00ffffff-no-rj'
+									alt='경로이상'
+								/>
+							</div>
+							<div className='ytb-icon'>
+								{liveOnMark()}
+								<img
+									className='live'
+									src='https://yt3.ggpht.com/QJdHgfT3P2HhhX4NdjtWYMK5vUNAjOmrKzBahdYOPMm62Qh2v3LaOOh_VW8pZso5TS8-gveo=s800-c-k-c0x00ffffff-no-rj'
+									alt='경로이상'
+								/>
+							</div>
+							<div className='ytb-icon'>
+								{liveOnMark()}
+								<img
+									className='live'
+									src='https://yt3.ggpht.com/hk4Bg_RBb21e2IDLN_Gjmw0jGfMIh26usUwjBvLr472mX8_l8dednSbifhXKPP0QCN8_EPAWBV0=s800-c-k-c0x00ffffff-no-rj'
+									alt='경로이상'
+								/>
+							</div>
+							<div className='ytb-icon'>
+								<img
+									src='https://yt3.ggpht.com/OWP5IUNUf0ja8UZfD7qJJ8Qyw5Gr2zXwfavKM96L2x6XQVgDxwOdWp-JmAzeCDecL2yTpoyN=s800-c-k-c0x00ffffff-no-rj'
+									alt='경로이상'
+								/>
+							</div>
+							<div className='ytb-icon'>
+								<img
+									src='https://yt3.ggpht.com/ZFF_hEJhjNyF3UJLolZZPEV8EMM7V-e8HtTvzLiZXNM6s4rh518242ghR-bUXRYkMaJtedKoaZA=s800-c-k-c0x00ffffff-no-rj'
+									alt='경로이상'
+								/>
+							</div>
+							<div className='ytb-icon'>
+								<img
+									src='https://yt3.ggpht.com/5vwZ3NZL6Zv4C7cl5sshsTk-XycH7r-4zo6nQR7g9Z7SLrMzeabWWzn5M1V3SqJXjTxLj_hb=s800-c-k-c0x00ffffff-no-rj'
+									alt='경로이상'
+								/>
+							</div>
+							<div className='ytb-icon'>
+								<img
+									src='https://yt3.ggpht.com/v3a75a7gUHU6E-gaJww_k5gkFYI8jthCtAR9ELMaRemymZhIyQLiIIRu4cWOt289DFH1UNkFMA=s800-c-k-c0x00ffffff-no-rj'
+									alt='경로이상'
+								/>
+							</div>
+							<div className='ytb-icon'>
+								<img
+									src='https://yt3.ggpht.com/ytc/AMLnZu8ofVKsVwxjdBgpmzWN4QyGjzDl7PX1O3FZ_EmsEg=s800-c-k-c0x00ffffff-no-rj-mo'
+									alt='경로이상'
+								/>
+							</div>
+							<div className='ytb-icon'>
+								<img
+									src='https://yt3.ggpht.com/AIoO_0IdKYBdzlcRQ85oZxMaTBj_RVDvP8QmTmJZoOO_TTJd5NXql17hDfIl_bvcTQ4aAqFGIA=s800-c-k-c0x00ffffff-no-rj'
+									alt='경로이상'
+								/>
+							</div>
+						</div>
+					</div>
+				</div>
+				<i className='bx bxs-chevron-right live-buttonR' onClick={liveRight} style={{ zIndex: 900 }}></i>
 			</div>
 		</div>
 	);

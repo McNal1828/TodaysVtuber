@@ -542,7 +542,7 @@ body.dark .search-center .search-box .search-results li:hover .text {
 	left: 93%;
 	top: 0%;
 	transition: 0.5s;
-	z-index: 110;
+	z-index: 105;
 	opacity: 0;
 	background: var(--sidebar-color);
 	transform: scale(1.01);
@@ -562,6 +562,7 @@ body.dark .search-center .search-box .search-results li:hover .text {
 	font-size: 75px;
 	transition: var(--transition-03);
 	color: var(--text-color);
+	cursor: pointer;
 }
 
 .homepage .homepage-slide .buttonL:hover,
@@ -701,25 +702,26 @@ body.dark .search-center .search-box .search-results li:hover .text {
 	width: inherit;
 	white-space: normal;
 }
-/* =====홈페이지-라이브중===== */
+/* =====홈페이지-추천===== */
 .recommends {
 	display: flex;
 	width: 100%;
 	justify-content: center;
+	justify-content: space-evenly;
 }
 .recommend {
-	width: 90%;
+	width: 46%;
 	min-width: 600px;
 	background: var(--component-color);
-	margin: 13px 5% 0px 5%;
+	margin: 13px 0% 0px 0%;
 	border-radius: 10px;
 	box-shadow: var(--box-shadow-01);
 }
 .recommend .header {
-	width: 94%;
+	width: 96%;
 	background: var(--primary-color-light);
 	padding: 6px 1%;
-	margin: 12px 2%;
+	margin: 12px 1%;
 	border-radius: 10px;
 }
 .recommend .header .text {
@@ -727,11 +729,11 @@ body.dark .search-center .search-box .search-results li:hover .text {
 	padding-left: 5px;
 }
 
-.recommend .ytb-icon-list {
+.ytb-icon-list {
 	display: flex;
 	flex-wrap: wrap;
 	/* width: 94%; */
-	margin: 10px 2%;
+	margin: 10px 1%;
 	/* background-color: blue; */
 }
 .ytb-icon {
@@ -752,7 +754,7 @@ body.dark .search-center .search-box .search-results li:hover .text {
 	object-fit: cover;
 }
 .ytb-icon img.live {
-	box-shadow: rgb(255, 0, 0) 0px 0px 0px 3px;
+	box-shadow: #ff3636 0px 0px 0px 3px;
 }
 
 .main-description .ytb-description {
@@ -848,13 +850,14 @@ body.dark .search-center .search-box .search-results li:hover .text {
 	margin: 0px 5px;
 	font-size: 14px;
 }
-.main-description .description-cell .ytb-icon-list {
+/* .main-description .description-cell .ytb-icon-list {
 	display: flex;
 	flex-wrap: wrap;
-}
+} */
 .youtube-section-no-icon {
+	/* position: relative; */
 	display: flex;
-	width: 95%;
+	width: 96%;
 	height: 80px;
 	margin: 2% 2%;
 	background: var(--body-color);
@@ -864,8 +867,8 @@ body.dark .search-center .search-box .search-results li:hover .text {
 }
 .youtube-section-no-icon .thumb {
 	width: 50%;
-	height: 90%;
-	margin: 2.5% 2%;
+	height: 76px;
+	margin: 2px 1%;
 	/* background-color: blue; */
 	overflow: hidden;
 }
@@ -910,11 +913,79 @@ body.dark .search-center .search-box .search-results li:hover .text {
 	/* align-items: center; */
 }
 .youtube-section-no-icon .detail .name .text {
-	font-size: 11px;
+	font-size: 10px;
 	font-weight: 400;
 	white-space: pre-wrap;
 	word-wrap: break-word;
 	word-break: break-all;
 	overflow: hidden;
 	margin: 0px 0px;
+}
+
+.homepage-slide .live-on {
+	display: flex;
+	position: absolute;
+	left: 5px;
+	bottom: 0;
+	width: 600px;
+	/* margin: 5px 0; */
+	align-items: center;
+}
+.homepage .live-on .live-container-wrap {
+	overflow-x: hidden;
+}
+.homepage-slide .live-on .live-buttonL,
+.homepage-slide .live-on .live-buttonR {
+	font-size: 25px;
+	transition: var(--transition-03);
+	color: var(--text-color);
+	opacity: 1;
+}
+.homepage-slide .live-on .live-buttonL:hover,
+.homepage-slide .live-on .live-buttonR:hover {
+	color: var(--primary-color);
+}
+.homepage-slide .live-on .live-container {
+	/* flex-wrap: nowrap; */
+	transform: translateX(0px);
+	/* overflow-x: hidden; */
+	width: 540px;
+	transition: var(--transition-03);
+}
+.homepage-slide .live-on .live-container .ytb-icon-list {
+	display: flex;
+	width: 10000px;
+	/* flex-wrap: nowrap; */
+	margin: 0 0;
+}
+/* =====홈페이지- 즐찾키리누커===== */
+.kirinukerList {
+	width: 100%;
+}
+.kirinukerList .kirinuker {
+	width: 98%;
+	min-width: 600px;
+	height: 350px;
+	margin: 13px 1% 0px 1%;
+	border-radius: 10px;
+	background: var(--primary-color-light);
+	box-shadow: var(--box-shadow-01);
+}
+.kirinukerList .kirinuker .kirinuker-detail {
+	display: flex;
+	width: 100%;
+	height: 300px;
+	border-radius: 10px;
+	/* background: var(--primary-color-light); */
+	box-shadow: var(--box-shadow-01);
+}
+.kirinukerList .kirinuker .kirinuker-detail .youtube-section-no-icon {
+	width: 20%;
+	height: 250px;
+	flex-direction: column;
+}
+.kirinukerList .kirinuker .kirinuker-detail .youtube-section-no-icon .thumb {
+	width: 95%;
+	height: 90%;
+	margin: 13px 5px;
 }

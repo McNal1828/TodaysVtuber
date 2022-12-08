@@ -1,12 +1,13 @@
-import Calender from './calender';
 import Slide from './homepage_slide';
-import Livenow from './livenow';
+import Recommends from './recommends';
+import KirinukerList from './KirinukerList';
 
 function Homepage() {
 	return (
 		<div className='homepage'>
 			<Slide />
-			<Livenow />
+			<Recommends />
+			<KirinukerList />
 			<h1>1</h1>
 			<h1>1</h1>
 			<h1>1</h1>

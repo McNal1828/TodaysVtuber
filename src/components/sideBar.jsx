@@ -88,7 +88,7 @@ function SideBar() {
 											<i className='bx bxs-videos' style={{ position: 'absolute', fontSize: '25px' }}></i>
 										</div>
 										{/* <i className='icon'>C</i> */}
-										<span className='text'>클 립 퍼</span>
+										<span className='text'>키 리 누 커</span>
 									</NavLink>
 								</li>
 								<li>
