@@ -757,27 +757,31 @@ body.dark .search-center .search-box .search-results li:hover .text {
 	box-shadow: #ff3636 0px 0px 0px 3px;
 }
 
-.main-description .ytb-description {
+.ytb-description {
 	display: flex;
 	flex-direction: column;
-	flex-wrap: wrap;
+	flex-wrap: nowrap;
 	width: 90%;
 	align-items: center;
 	justify-content: center;
 	margin: 13px 5%;
 	box-shadow: var(--box-shadow-03);
 }
-.main-description .ytb-description .ytb-detail {
+.ytb-description .ytb-detail {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	margin-bottom: 5px;
 }
-.main-description .ytb-description .ytb-detail .text {
+.ytb-description .ytb-detail .text {
+	white-space: pre-wrap;
+	word-wrap: break-word;
+	word-break: break-all;
 	font-weight: 900;
 	font-size: 20px;
+	margin: 0px 2px;
 }
-.main-description .ytb-description .ytb-btns {
+.ytb-description .ytb-btns {
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -960,32 +964,100 @@ body.dark .search-center .search-box .search-results li:hover .text {
 }
 /* =====홈페이지- 즐찾키리누커===== */
 .kirinukerList {
+	position: relative;
 	width: 100%;
+}
+.kirinukerList .widen {
+	position: absolute;
+	bottom: 30px;
+	left: calc(55%);
+	font-size: 24px;
+}
+.kirinukerList .kirinuker-tab {
+	display: flex;
 }
 .kirinukerList .kirinuker {
 	width: 98%;
 	min-width: 600px;
-	height: 350px;
+	min-height: 270px;
 	margin: 13px 1% 0px 1%;
 	border-radius: 10px;
 	background: var(--primary-color-light);
 	box-shadow: var(--box-shadow-01);
 }
 .kirinukerList .kirinuker .kirinuker-detail {
-	display: flex;
+	width: 12%;
+	/* background-color: red; */
+	min-height: 220px;
+	border-radius: 10px;
+}
+.kirinukerList .kirinuker .kirinuker-detail .ytb-description {
+	min-height: 220px;
+	margin: 0px 0px;
 	width: 100%;
-	height: 300px;
+	justify-content: space-evenly;
+	box-shadow: none;
+}
+.kirinukerList .kirinuker .kirinuker-detail .ytb-description .text {
+	margin: 3px 5%;
+}
+
+.kirinukerList .kirinuker .kirinuker-recent {
+	position: relative;
+	display: flex;
+	justify-content: space-evenly;
+	width: 88%;
+	height: 220px;
 	border-radius: 10px;
 	/* background: var(--primary-color-light); */
-	box-shadow: var(--box-shadow-01);
+	/* box-shadow: var(--box-shadow-01); */
 }
-.kirinukerList .kirinuker .kirinuker-detail .youtube-section-no-icon {
-	width: 20%;
-	height: 250px;
+.kirinukerList .kirinuker .kirinuker-recent .youtube-section-no-icon {
+	width: 23%;
+	height: 210px;
 	flex-direction: column;
+	margin: 5px 0px;
 }
-.kirinukerList .kirinuker .kirinuker-detail .youtube-section-no-icon .thumb {
+.kirinukerList .kirinuker .kirinuker-recent .youtube-section-no-icon .thumb {
+	width: auto;
+	height: 68%;
+	margin: 5px 5px;
+}
+.kirinukerList .kirinuker .kirinuker-recent .youtube-section-no-icon .detail {
 	width: 95%;
-	height: 90%;
-	margin: 13px 5px;
+	height: 28%;
+	margin: 0px 5px;
+}
+.kirinukerList .kirinuker .kirinuker-recent .youtube-section-no-icon .detail .title {
+	height: 100%;
+	max-height: 100%;
+}
+.kirinukerList .kirinuker .kirinuker-recent .youtube-section-no-icon .detail .title .text {
+	font-size: 14px;
+}
+.kirinuker-analysis {
+	display: flex;
+}
+.vtuber-analysis {
+	display: flex;
+	margin: 0px 8px;
+}
+.kirinuker-analysis .vtuber-analysis .ytb-icon {
+	width: 46px;
+	height: 46px;
+	margin: 2px 8px;
+}
+.kirinuker-analysis .vtuber-analysis .detail {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+	margin: 5px 0px;
+}
+.kirinuker-analysis .vtuber-analysis .detail .name.text {
+	font-size: 17px;
+	font-weight: 700;
+}
+.kirinuker-analysis .vtuber-analysis .detail .percentage.text {
+	font-size: 14px;
+	font-weight: 600;
 }
