@@ -85,7 +85,97 @@ function KirinukerList() {
 									<p className='text'>{originalVideo.title}</p>
 								</div>
 							</div>
+						</div>{' '}
+						<div
+							className='youtube-section-no-icon'
+							onClick={(e) => {
+								window.open(originalVideo.link, 'blank');
+							}}
+						>
+							<div className='thumb'>
+								<img src={originalVideo.thumb} alt='경로이상' />
+							</div>
+							<div className='detail'>
+								<div className='title'>
+									<p className='text'>{originalVideo.title}</p>
+								</div>
+							</div>
 						</div>
+						<div
+							className='youtube-section-no-icon'
+							onClick={(e) => {
+								window.open(originalVideo.link, 'blank');
+							}}
+						>
+							<div className='thumb'>
+								<img src={originalVideo.thumb} alt='경로이상' />
+							</div>
+							<div className='detail'>
+								<div className='title'>
+									<p className='text'>{originalVideo.title}</p>
+								</div>
+							</div>
+						</div>
+						<div
+							className='youtube-section-no-icon'
+							onClick={(e) => {
+								window.open(originalVideo.link, 'blank');
+							}}
+						>
+							<div className='thumb'>
+								<img src={originalVideo.thumb} alt='경로이상' />
+							</div>
+							<div className='detail'>
+								<div className='title'>
+									<p className='text'>{originalVideo.title}</p>
+								</div>
+							</div>
+						</div>
+						<div
+							className='youtube-section-no-icon'
+							onClick={(e) => {
+								window.open(originalVideo.link, 'blank');
+							}}
+						>
+							<div className='thumb'>
+								<img src={originalVideo.thumb} alt='경로이상' />
+							</div>
+							<div className='detail'>
+								<div className='title'>
+									<p className='text'>{originalVideo.title}</p>
+								</div>
+							</div>
+						</div>
+						<div
+							className='youtube-section-no-icon'
+							onClick={(e) => {
+								window.open(originalVideo.link, 'blank');
+							}}
+						>
+							<div className='thumb'>
+								<img src={originalVideo.thumb} alt='경로이상' />
+							</div>
+							<div className='detail'>
+								<div className='title'>
+									<p className='text'>{originalVideo.title}</p>
+								</div>
+							</div>
+						</div>{' '}
+						<div
+							className='youtube-section-no-icon'
+							onClick={(e) => {
+								window.open(originalVideo.link, 'blank');
+							}}
+						>
+							<div className='thumb'>
+								<img src={originalVideo.thumb} alt='경로이상' />
+							</div>
+							<div className='detail'>
+								<div className='title'>
+									<p className='text'>{originalVideo.title}</p>
+								</div>
+							</div>
+						</div>{' '}
 						<div
 							className='youtube-section-no-icon'
 							onClick={(e) => {
@@ -142,7 +232,16 @@ function KirinukerList() {
 					</div>
 				</div>
 				<div className='widen'>
-					<i class='bx bxs-chevrons-down bx-fade-down'></i>
+					<i
+						class='bx bxs-chevrons-down bx-fade-down'
+						onClick={(e) => {
+							e.target.parentElement.parentElement.children[0].children[1].classList.toggle('open');
+							e.target.classList.toggle('bxs-chevrons-down');
+							e.target.classList.toggle('bx-fade-down');
+							e.target.classList.toggle('bxs-chevrons-up');
+							e.target.classList.toggle('bx-fade-up');
+						}}
+					></i>
 					{/* <i class='bx bxs-chevrons-up'></i> */}
 				</div>
 			</div>

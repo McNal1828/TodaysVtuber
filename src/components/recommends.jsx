@@ -6,7 +6,7 @@ function Recommends() {
 					<span className='text'>추천 Vtuber</span>
 				</div>
 				<div className='ytb-icon-list'>
-					<div className='ytb-icon'>
+					{/* <div className='ytb-icon'>
 						<img src='https://yt3.ggpht.com/ytc/AMLnZu8ofVKsVwxjdBgpmzWN4QyGjzDl7PX1O3FZ_EmsEg=s800-c-k-c0x00ffffff-no-rj-mo' alt='경로이상' />
 					</div>
 					<div className='ytb-icon'>
@@ -62,7 +62,7 @@ function Recommends() {
 							src='https://yt3.ggpht.com/AIoO_0IdKYBdzlcRQ85oZxMaTBj_RVDvP8QmTmJZoOO_TTJd5NXql17hDfIl_bvcTQ4aAqFGIA=s800-c-k-c0x00ffffff-no-rj'
 							alt='경로이상'
 						/>
-					</div>
+					</div> */}
 				</div>
 			</div>
 			<div className='recommend'>
