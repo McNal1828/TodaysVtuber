@@ -102,6 +102,8 @@ video {
 	--slide-container-height: 450px;
 	--search-box-width: 600px;
 
+	--border: 2px solid #dadada;
+
 	--box-shadow-01: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em, rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em, rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
 	--box-shadow-02: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
 	--box-shadow-03: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px, rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
@@ -432,7 +434,9 @@ body.dark .search-center .search-box .search-results li:hover .text {
 /* =====메인페이지===== */
 
 /* =====홈페이지===== */
-
+.homepage {
+	width: calc(100vw - 86px);
+}
 /* =====홈페이지-슬라이드===== */
 .homepage .homepage-slide {
 	width: 100%;
@@ -969,11 +973,126 @@ body.dark .search-center .search-box .search-results li:hover .text {
 	width: 100%;
 }
 .kirinukerList .kirinuker {
+	display: flex;
+	flex-direction: column;
+	width: 98%;
+	padding: 15px 1%;
+}
+.kirinukerList .kirinuker .header {
+	position: relative;
+	display: flex;
+}
+.kirinukerList .kirinuker .header .ytb-detail {
+	display: flex;
+	align-items: center;
+	padding: 2px 45px 2px 10px;
+	background: var(--primary-color-light);
+	border-radius: 10px 20px 0px 0px;
+	border-right: var(--border);
+	border-left: var(--border);
+	border-top: var(--border);
+	border-bottom: var(--primary-color-light) solid 1px;
+}
+.kirinukerList .kirinuker .header .ytb-detail .ytb-icon {
+	width: 50px;
+	height: 50px;
+}
+.kirinukerList .kirinuker .header .ytb-detail .text {
+	font-size: 20px;
+	font-weight: 600;
+	padding-left: 10px;
+}
+.kirinukerList .kirinuker .header .analysis {
+	display: flex;
+	align-items: flex-end;
+}
+.kirinukerList .kirinuker .header .analysis .vtuber-analysis {
+	display: flex;
+	align-items: center;
+}
+.kirinukerList .kirinuker .header .analysis .vtuber-analysis .ytb-icon {
+	width: 40px;
+	height: 40px;
+}
+.kirinukerList .kirinuker .header .btns {
+	position: absolute;
+	right: 0;
+	top: 17px;
+}
+.kirinukerList .kirinuker .body {
+	background: var(--primary-color-light);
+	height: auto;
+	border-top-right-radius: 10px;
+	border-right: var(--border);
+	border-left: var(--border);
+	border-top: var(--border);
+}
+.kirinukerList .kirinuker .body .kirinuker-recent.open {
+	height: 452px;
+}
+.kirinukerList .kirinuker .body .kirinuker-recent {
+	position: relative;
+	display: flex;
+	justify-content: space-evenly;
+	flex-wrap: wrap;
+	width: 100%;
+	height: 226px;
+	overflow-y: hidden;
+	transition: var(--transition-05);
+	/* border-radius: 0px 10px 10px 0px;
+	box-shadow: var(--box-shadow-03);
+	transition: var(--transition-05); */
+}
+.kirinukerList .kirinuker .body .kirinuker-recent .youtube-section-no-icon {
+	/* min-width: 270px; */
+	flex-basis: 270px;
+	flex-grow: 1;
+	height: 210px;
+	flex-direction: column;
+	margin: 8px 10px;
+}
+.kirinukerList .kirinuker .body .kirinuker-recent .youtube-section-no-icon .thumb {
+	width: auto;
+	height: 150px;
+	margin: 3px 5px;
+}
+.kirinukerList .kirinuker .body .kirinuker-recent .youtube-section-no-icon .detail {
+	width: auto;
+	height: fit-content;
+	max-height: 46px;
+	margin: 3px 5px;
+}
+.kirinukerList .kirinuker .body .kirinuker-recent .youtube-section-no-icon .detail .title {
+	width: auto;
+	height: fit-content;
+	max-height: 80px;
+	overflow-y: hidden;
+}
+.kirinukerList .kirinuker .footer {
+	background: var(--primary-color-light);
+	height: 20px;
+	position: relative;
+	border-radius: 0px 0px 10px 10px;
+	border-right: var(--border);
+	border-left: var(--border);
+	border-bottom: var(--border);
+}
+.kirinukerList .kirinuker .footer .widen {
+	position: absolute;
+	bottom: -5px;
+	left: calc(50.2%);
+	font-size: 24px;
+	color: var(--text-color);
+}
+.kirinukerList .kirinuker .footer .widen.up {
+	bottom: -5px;
+}
+/* .kirinukerList .kirinuker {
 	position: relative;
 }
 .kirinukerList .kirinuker .widen {
 	position: absolute;
-	bottom: 30px;
+	bottom: 25px;
 	left: calc(55.2%);
 	font-size: 24px;
 }
@@ -986,7 +1105,6 @@ body.dark .search-center .search-box .search-results li:hover .text {
 	width: 98%;
 	display: flex;
 	flex-direction: column;
-	justify-content: space-between;
 	min-width: 600px;
 	min-height: 280px;
 	margin: 13px 1% 0px 1%;
@@ -996,7 +1114,6 @@ body.dark .search-center .search-box .search-results li:hover .text {
 }
 .kirinukerList .kirinuker .kirinuker-detail {
 	width: 13%;
-	/* background-color: red; */
 	min-height: 220px;
 	border-radius: 10px;
 }
@@ -1022,10 +1139,8 @@ body.dark .search-center .search-box .search-results li:hover .text {
 	flex-wrap: wrap;
 	width: 87%;
 	height: 220px;
-	/* min-height: 220px; */
 	overflow-y: hidden;
 	border-radius: 0px 10px 10px 0px;
-	/* background: var(--primary-color-light); */
 	box-shadow: var(--box-shadow-03);
 	transition: var(--transition-05);
 }
@@ -1060,7 +1175,7 @@ body.dark .search-center .search-box .search-results li:hover .text {
 }
 .vtuber-analysis {
 	display: flex;
-	margin: 0px 8px;
+	margin: 10px 8px 0px 8px;
 }
 .kirinuker-analysis .vtuber-analysis .ytb-icon {
 	width: 46px;
@@ -1080,4 +1195,4 @@ body.dark .search-center .search-box .search-results li:hover .text {
 .kirinuker-analysis .vtuber-analysis .detail .percentage.text {
 	font-size: 14px;
 	font-weight: 600;
-}
+} */
