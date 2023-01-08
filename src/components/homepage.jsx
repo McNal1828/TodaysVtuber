@@ -1,5 +1,4 @@
 import Slide from './homepage_slide';
-import Recommends from './recommends';
 import KirinukerList from './KirinukerList';
 
 function Homepage() {
@@ -8,6 +7,8 @@ function Homepage() {
 			<Slide />
 			{/* <Recommends /> */}
 			<KirinukerList />
+			<h1>ss</h1>
+			<h1>ss</h1>
 			<h1>1</h1>
 			<h1>1</h1>
 			<h1>1</h1>

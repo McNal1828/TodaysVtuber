@@ -1,108 +1,93 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { tvapi } from '../app/api';
+import { addRecentVideos } from '../app/favoriteSlice';
 
-function KirinukerList() {
-	const [originalVideo, setOriginalVideo] = useState({});
-	function setFront(icon, name, link, description, original, related, sameOthers, videoRelated) {
-		setOriginalVideo({
-			link: 'https://www.youtube.com/watch?v=DPEtmqvaKqY',
-			thumb: 'https://i.ytimg.com/vi/DPEtmqvaKqY/maxresdefault.jpg',
-			title: '[MV] 팬서비스( ファンサ ) COVER by 고세구[MV] 팬서비스( ファンサ ) COVER by 고세구[MV] 팬서비스( ファンサ ) COVER by 고세구[MV] 팬서비스( ファンサ ) COVER by 고세구',
-			name: '오리고기 origogi',
-		});
-	}
-
+// let kirinukervideolist = [];
+const KirinukerRecents = ({ id }) => {
+	const dispatch = useDispatch();
+	const query = tvapi.useGetKirinukerVideosQuery({ id });
+	// console.log('KirinukerRecents', id, query.isLoading);
+	const data = query.data;
+	// let list = [];
 	useEffect(() => {
-		setFront();
-	}, []);
-
-	const recent = (url) => {
-		return (
-			<div
-				className='youtube-section-no-icon'
-				onClick={(e) => {
-					window.open(originalVideo.link, 'blank');
-				}}
-			>
-				<div className='thumb'>
-					<img src={originalVideo.thumb} alt='경로이상' loading='lazy' />
-				</div>
-				<div className='detail'>
-					<div className='title'>
-						<p className='text'>{originalVideo.title}</p>
+		if (data != null) {
+			data.map((dat) => {
+				dispatch(addRecentVideos({ id: dat.id, upload: dat.upload }));
+			});
+		}
+	}, [data]);
+	if (query.isLoading) {
+		var vel = [];
+		var i = 0;
+		while (i < 10) {
+			vel.push(
+				<div className='youtube-section-no-icon' key={i}>
+					<div className='thumb'>
+						<p className='text'>로딩중</p>
+					</div>
+					<div className='detail'>
+						<div className='title'>
+							<p className='text'>로딩중</p>
+						</div>
 					</div>
 				</div>
-			</div>
-		);
-	};
-
-	return (
-		<div className='kirinukerList'>
+			);
+			i++;
+		}
+		return vel;
+	} else {
+		// console.log(data);
+		const datas = data.map((dat) => {
+			// console.log(dat.id);
+			// console.log(dat.upload);
+			// console.log(new Date(dat.upload).toLocaleString());
+			// list.push({ id: dat.id, upload: new Date(dat.upload) });
+			// console.log(list);
+			// dispatch(addRecentVideos({ id: dat.id, upload: dat.upload }));
+			// kirinukervideolist.push({ id: dat.id, upload: dat.upload });
+			return (
+				<div
+					className='youtube-section-no-icon'
+					onClick={(e) => {
+						window.open(`https://www.youtube.com/watch?v=${dat.id}`, 'blank');
+					}}
+					key={dat.id}
+				>
+					<div className='thumb'>
+						<img src={dat.thumb} alt='경로이상' loading='lazy' />
+					</div>
+					<div className='detail'>
+						<div className='title'>
+							<p className='text'>{dat.title}</p>
+						</div>
+					</div>
+				</div>
+			);
+		});
+		return datas;
+	}
+};
+const Kirinuker = ({ id }) => {
+	const query = tvapi.useGetKirinukerIdQuery({ id });
+	// console.log('kirinuker', id, query.isLoading);
+	if (query.isLoading) {
+		return (
 			<div className='kirinuker'>
 				<div className='header'>
 					<div className='ytb-detail'>
-						<div className='ytb-icon'>
-							<img src={originalVideo.thumb} alt='경로이상' />
-						</div>
-						<p className='text'>{originalVideo.name}</p>
+						<div className='ytb-icon'></div>
+						<p className='text'>로딩중</p>
 					</div>
-					<div className='analysis'>
-						<div className='vtuber-analysis'>
-							<div className='ytb-icon'>
-								<img src={originalVideo.thumb} alt='경로이상' />
-							</div>
-							<div className='detail'>
-								<p className='name text'>샤이릴리 shylily</p>
-								<p className='percentage text'>59%</p>
-							</div>
-						</div>
-						<div className='vtuber-analysis'>
-							<div className='ytb-icon'>
-								<img src={originalVideo.thumb} alt='경로이상' />
-							</div>
-							<div className='detail'>
-								<p className='name text'>가우르 구라</p>
-								<p className='percentage text'>20%</p>
-							</div>
-						</div>
-						<div className='vtuber-analysis'>
-							<div className='ytb-icon'>
-								<img src={originalVideo.thumb} alt='경로이상' />
-							</div>
-							<div className='detail'>
-								<p className='name text'>에밀리아 왓슨</p>
-								<p className='percentage text'>11%</p>
-							</div>
-						</div>
-						<div className='vtuber-analysis'>
-							<div className='ytb-icon'>
-								<img src={originalVideo.thumb} alt='경로이상' />
-							</div>
-							<div className='detail'>
-								<p className='name text'>기타</p>
-								<p className='percentage text'>10%</p>
-							</div>
-						</div>
-					</div>
+					<div className='analysis'></div>
 					<div className='btns'>
 						<button className='sub-btn'>
-							<a href={originalVideo.link + '?sub_confirmation=1'} target='blank'>
-								해제
-							</a>
+							<p>로딩중</p>
 						</button>
 					</div>
 				</div>
 				<div className='body'>
-					<div className='kirinuker-recent'>
-						{recent()}
-						{recent()}
-						{recent()}
-						{recent()}
-						{recent()}
-						{recent()}
-						{recent()}
-						{recent()}
-						{recent()}
-					</div>
+					<div className='kirinuker-recent'></div>
 				</div>
 				<div className='footer'>
 					<div className='widen'>
@@ -120,6 +105,121 @@ function KirinukerList() {
 					</div>
 				</div>
 			</div>
+		);
+	} else {
+		const data = query.data[0];
+		return (
+			<div className='kirinuker'>
+				<div className='header'>
+					<div className='ytb-detail'>
+						<div className='ytb-icon'>
+							<img src={data.icon} alt='경로이상' />
+						</div>
+						<p className='text'>{data.name}</p>
+					</div>
+					<div className='analysis'>
+						<div className='vtuber-analysis'>
+							<div className='ytb-icon'>
+								<img src={data['1st_icon']} alt='경로이상' />
+							</div>
+							<div className='detail'>
+								<p className='name text'>{data['1st_name']}</p>
+								<p className='percentage text'>{data['1st_p']}%</p>
+							</div>
+						</div>
+						<div className='vtuber-analysis'>
+							<div className='ytb-icon'>
+								<img src={data['2nd_icon']} alt='경로이상' />
+							</div>
+							<div className='detail'>
+								<p className='name text'>{data['2nd_name']}</p>
+								<p className='percentage text'>{data['2nd_p']}%</p>
+							</div>
+						</div>
+						<div className='vtuber-analysis'>
+							<div className='ytb-icon'>
+								<img src={data['3rd_icon']} alt='경로이상' />
+							</div>
+							<div className='detail'>
+								<p className='name text'>{data['3rd_name']}</p>
+								<p className='percentage text'>{data['3rd_p']}%</p>
+							</div>
+						</div>
+						<div className='vtuber-analysis'>
+							<div className='ytb-icon'>
+								<img src={data['4th_icon']} alt='경로이상' />
+							</div>
+							<div className='detail'>
+								<p className='name text'>{data['4th_name']}</p>
+								<p className='percentage text'>{data['4th_p']}%</p>
+							</div>
+						</div>
+						<div className='vtuber-analysis'>
+							<div className='ytb-icon'>
+								<img src={data['5th_icon']} alt='경로이상' />
+							</div>
+							<div className='detail'>
+								<p className='name text'>{data['5th_name']}</p>
+								<p className='percentage text'>{data['5th_p']}%</p>
+							</div>
+						</div>
+					</div>
+					<div className='btns'>
+						<button className='sub-btn'>
+							<a href={data.link + '?sub_confirmation=1'} target='blank'>
+								해제
+							</a>
+						</button>
+					</div>
+				</div>
+				<div className='body'>
+					<div className='kirinuker-recent'>
+						<KirinukerRecents id={id} />
+					</div>
+				</div>
+				<div className='footer'>
+					<div className='widen'>
+						<i
+							className='bx bxs-chevron-down'
+							onClick={(e) => {
+								e.target.parentElement.parentElement.parentElement.children[1].children[0].classList.toggle('open');
+								e.target.parentElement.classList.toggle('up');
+								e.target.classList.toggle('bxs-chevron-down');
+								// e.target.classList.toggle('bx-fade-down');
+								e.target.classList.toggle('bxs-chevron-up');
+								// e.target.classList.toggle('bx-fade-up');
+							}}
+						></i>
+					</div>
+				</div>
+			</div>
+		);
+	}
+};
+const Kirinukers = ({ list }) => {
+	// console.log(list);
+	const kirinukers = list.map((id) => {
+		return <Kirinuker id={id} key={id} />;
+	});
+	return kirinukers;
+};
+function KirinukerList() {
+	const list = ['UCl6T8WeV06Yzvm3GPm1kA9w', 'UCzNEFRHQERRRmNjR-Z5duag', 'UCje0SVcZO29akCbEzDQxwcw', 'UCp5cDlDvsLUp6wjl4ELtmNw'];
+	const recent = useSelector((state) => {
+		return state.favorite.recentVideos;
+	});
+	return (
+		<div className='kirinukerList'>
+			<Kirinukers list={list} />
+
+			{recent.map((item, index) => {
+				var date = new Date(item.upload).toLocaleString();
+				return (
+					<h1 key={index}>
+						{item.id},{date}
+					</h1>
+				);
+			})}
 		</div>
 	);
 }

@@ -1,6 +1,11 @@
 import { useEffect, useRef, useState } from 'react';
+import { useSelector } from 'react-redux';
 
 function Slide() {
+	const recent = useSelector((state) => {
+		return state.favorite.recentVideos;
+	});
+
 	const firstR = useRef(null);
 	const secondR = useRef(null);
 	const thirdR = useRef(null);
@@ -241,46 +246,47 @@ function Slide() {
 		setVideoYoutuberIcon('https://yt3.ggpht.com/AIoO_0IdKYBdzlcRQ85oZxMaTBj_RVDvP8QmTmJZoOO_TTJd5NXql17hDfIl_bvcTQ4aAqFGIA=s800-c-k-c0x00ffffff-no-rj');
 		setVideoYoutuberName('오리고기 origogi');
 		setVideoYoutuberLink('https://www.youtube.com/channel/UCs6EwgxKLY9GG4QNUrP5hoQ');
-		setVideoDescription(`・Original : 취기를 빌려 - 산들 (Slightly Tipsy)
-・Director : 샤인머시깽
-・Project Manager : 보도도
-・Blender : 샤인머시깽
-・Unreal Engine : Ojik, 보도도
-・Motion/Facial capture : 보도도
-・Motion Guide : 비챤
-・Avatar Editing : 링고
-・Vocal : 비챤
-・Mix/Mastering : Chocotree
-・Instrument : 와하후
-・Instrument (Guitar) : 슬랩혀
-・MV Edit : 판다
-・MV Edit (Teaser) : 호챤
-・Thumbnail Design : 크리앤탈
-・Special Thanks : 송도경찰메시
-・생방송　https://www.twitch.tv/viichan6
-・인스타그램　https://www.instagram.com/viichan6
-・아바타　https://hyuuganatu.booth.pm (ひゅうがなつ様)
-#비챤 #이세돌 #취기를빌려
-・Original : 취기를 빌려 - 산들 (Slightly Tipsy)
-・Director : 샤인머시깽
-・Project Manager : 보도도
-・Blender : 샤인머시깽
-・Unreal Engine : Ojik, 보도도
-・Motion/Facial capture : 보도도
-・Motion Guide : 비챤
-・Avatar Editing : 링고
-・Vocal : 비챤
-・Mix/Mastering : Chocotree
-・Instrument : 와하후
-・Instrument (Guitar) : 슬랩혀
-・MV Edit : 판다
-・MV Edit (Teaser) : 호챤
-・Thumbnail Design : 크리앤탈
-・Special Thanks : 송도경찰메시
-・생방송　https://www.twitch.tv/viichan6
-・인스타그램　https://www.instagram.com/viichan6
-・아바타　https://hyuuganatu.booth.pm (ひゅうがなつ様)
-#비챤 #이세돌 #취기를빌려`);
+		setVideoDescription(recent[0]);
+		// 		setVideoDescription(`・Original : 취기를 빌려 - 산들 (Slightly Tipsy)
+		// ・Director : 샤인머시깽
+		// ・Project Manager : 보도도
+		// ・Blender : 샤인머시깽
+		// ・Unreal Engine : Ojik, 보도도
+		// ・Motion/Facial capture : 보도도
+		// ・Motion Guide : 비챤
+		// ・Avatar Editing : 링고
+		// ・Vocal : 비챤
+		// ・Mix/Mastering : Chocotree
+		// ・Instrument : 와하후
+		// ・Instrument (Guitar) : 슬랩혀
+		// ・MV Edit : 판다
+		// ・MV Edit (Teaser) : 호챤
+		// ・Thumbnail Design : 크리앤탈
+		// ・Special Thanks : 송도경찰메시
+		// ・생방송　https://www.twitch.tv/viichan6
+		// ・인스타그램　https://www.instagram.com/viichan6
+		// ・아바타　https://hyuuganatu.booth.pm (ひゅうがなつ様)
+		// #비챤 #이세돌 #취기를빌려
+		// ・Original : 취기를 빌려 - 산들 (Slightly Tipsy)
+		// ・Director : 샤인머시깽
+		// ・Project Manager : 보도도
+		// ・Blender : 샤인머시깽
+		// ・Unreal Engine : Ojik, 보도도
+		// ・Motion/Facial capture : 보도도
+		// ・Motion Guide : 비챤
+		// ・Avatar Editing : 링고
+		// ・Vocal : 비챤
+		// ・Mix/Mastering : Chocotree
+		// ・Instrument : 와하후
+		// ・Instrument (Guitar) : 슬랩혀
+		// ・MV Edit : 판다
+		// ・MV Edit (Teaser) : 호챤
+		// ・Thumbnail Design : 크리앤탈
+		// ・Special Thanks : 송도경찰메시
+		// ・생방송　https://www.twitch.tv/viichan6
+		// ・인스타그램　https://www.instagram.com/viichan6
+		// ・아바타　https://hyuuganatu.booth.pm (ひゅうがなつ様)
+		// #비챤 #이세돌 #취기를빌려`);
 		setOriginalVideo({
 			link: 'https://www.youtube.com/watch?v=DPEtmqvaKqY',
 			thumb: 'https://i.ytimg.com/vi/DPEtmqvaKqY/maxresdefault.jpg',

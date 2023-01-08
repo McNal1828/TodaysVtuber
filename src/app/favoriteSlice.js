@@ -3,13 +3,28 @@ import { createSlice } from '@reduxjs/toolkit';
 export const favoriteSlice = createSlice({
 	name: 'favorite',
 	initialState: {
-		favoriteNew9: [
-			{ videoLink: '', thumbLink: '', videoOwmnerName: '', videoDescription: '', originalVideo: '', vtuberRelated: [{ name: '', iconLink: '' }] },
-		],
+		recentVideos: [],
 		liveOn: [],
 	},
-	reducers: {},
+	reducers: {
+		resetRecentVideos: (state, action) => {
+			state.recentVideos = [];
+		},
+		addRecentVideos: (state, action) => {
+			state.recentVideos.push(action.payload);
+			state.recentVideos.sort((a, b) => {
+				if (a.upload < b.upload) {
+					return 1;
+				}
+				if (a.upload > b.upload) {
+					return -1;
+				}
+				return 0;
+			});
+			state.recentVideos = state.recentVideos.slice(0, 10);
+		},
+	},
 });
 
-// export const {} = createSlice.actions;
+export const { addRecentVideos, resetRecentVideos } = favoriteSlice.actions;
 export default createSlice;
