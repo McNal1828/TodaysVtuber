@@ -21,7 +21,7 @@ export const favoriteSlice = createSlice({
 				}
 				return 0;
 			});
-			state.recentVideos = state.recentVideos.slice(0, 10);
+			state.recentVideos = state.recentVideos.slice(0, 9);
 		},
 	},
 });

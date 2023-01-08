@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { tvapi } from '../app/api';
-import { addRecentVideos } from '../app/favoriteSlice';
+import { addRecentVideos, resetRecentVideos } from '../app/favoriteSlice';
 
 // let kirinukervideolist = [];
 const KirinukerRecents = ({ id }) => {
@@ -12,8 +12,18 @@ const KirinukerRecents = ({ id }) => {
 	// let list = [];
 	useEffect(() => {
 		if (data != null) {
+			// console.log('insert');
 			data.map((dat) => {
-				dispatch(addRecentVideos({ id: dat.id, upload: dat.upload }));
+				dispatch(
+					addRecentVideos({
+						id: dat.id,
+						thumb: dat.thumb,
+						title: dat.title,
+						description: dat.description,
+						upload: dat.upload,
+						kirinuker: dat.kirinuker,
+					})
+				);
 			});
 		}
 	}, [data]);
@@ -70,6 +80,7 @@ const KirinukerRecents = ({ id }) => {
 };
 const Kirinuker = ({ id }) => {
 	const query = tvapi.useGetKirinukerIdQuery({ id });
+	const datas = query.data;
 	// console.log('kirinuker', id, query.isLoading);
 	if (query.isLoading) {
 		return (
@@ -198,16 +209,24 @@ const Kirinuker = ({ id }) => {
 };
 const Kirinukers = ({ list }) => {
 	// console.log(list);
+
 	const kirinukers = list.map((id) => {
 		return <Kirinuker id={id} key={id} />;
 	});
 	return kirinukers;
 };
 function KirinukerList() {
-	const list = ['UCl6T8WeV06Yzvm3GPm1kA9w', 'UCzNEFRHQERRRmNjR-Z5duag', 'UCje0SVcZO29akCbEzDQxwcw', 'UCp5cDlDvsLUp6wjl4ELtmNw'];
+	const list = ['UCGphOcrcx_oLH22bevHe8og', 'UCt_ntnKaZFs8OXINziOO0Zw', 'UCje0SVcZO29akCbEzDQxwcw', 'UCp5cDlDvsLUp6wjl4ELtmNw'];
 	const recent = useSelector((state) => {
 		return state.favorite.recentVideos;
 	});
+	const dispatch = useDispatch();
+	useEffect(() => {
+		return () => {
+			// console.log('reset');
+			dispatch(resetRecentVideos());
+		};
+	}, []);
 	return (
 		<div className='kirinukerList'>
 			<Kirinukers list={list} />

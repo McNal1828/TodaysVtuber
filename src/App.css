@@ -476,28 +476,6 @@ body.dark .search-center .search-box .search-results li:hover .text {
 	width: 100%;
 	height: 100%;
 	position: absolute;
-	left: -280px;
-	transition: 0.5s;
-	z-index: 80;
-	filter: brightness(30%);
-	transform: scale(0.75);
-	box-shadow: 14px -5px 35px -21px rgba(0, 0, 0, 0.66);
-}
-.homepage .homepage-slide .container .contents:nth-child(2) {
-	width: 100%;
-	height: 100%;
-	position: absolute;
-	left: -140px;
-	transition: 0.5s;
-	z-index: 90;
-	filter: brightness(60%);
-	transform: scale(0.9);
-	box-shadow: 14px -5px 35px -21px rgba(0, 0, 0, 0.66);
-}
-.homepage .homepage-slide .container .contents:nth-child(3) {
-	width: 100%;
-	height: 100%;
-	position: absolute;
 	left: 0px;
 	transition: 0.5s;
 	z-index: 100;
@@ -505,7 +483,7 @@ body.dark .search-center .search-box .search-results li:hover .text {
 	transform: scale(1);
 	box-shadow: 14px -5px 35px -21px rgba(0, 0, 0, 0.66);
 }
-.homepage .homepage-slide .container .contents:nth-child(4) {
+.homepage .homepage-slide .container .contents:nth-child(2) {
 	width: 100%;
 	height: 100%;
 	position: absolute;
@@ -516,7 +494,7 @@ body.dark .search-center .search-box .search-results li:hover .text {
 	transform: scale(0.9);
 	box-shadow: 14px -5px 35px -21px rgba(0, 0, 0, 0.66);
 }
-.homepage .homepage-slide .container .contents:nth-child(5) {
+.homepage .homepage-slide .container .contents:nth-child(3) {
 	width: 100%;
 	height: 100%;
 	position: absolute;
@@ -527,7 +505,73 @@ body.dark .search-center .search-box .search-results li:hover .text {
 	transform: scale(0.75);
 	box-shadow: 14px -5px 35px -21px rgba(0, 0, 0, 0.66);
 }
+.homepage .homepage-slide .container .contents:nth-child(4) {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	left: 300px;
+	transition: 0.5s;
+	z-index: 70;
+	filter: brightness(0%);
+	transform: scale(0);
+	box-shadow: 14px -5px 35px -21px rgba(0, 0, 0, 0.66);
+}
+.homepage .homepage-slide .container .contents:nth-child(5) {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	left: 300px;
+	transition: 0.5s;
+	z-index: 60;
+	filter: brightness(0%);
+	transform: scale(0);
+	box-shadow: 14px -5px 35px -21px rgba(0, 0, 0, 0.66);
+}
 .homepage .homepage-slide .container .contents:nth-child(6) {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	left: -300px;
+	transition: 0.5s;
+	z-index: 60;
+	filter: brightness(0%);
+	transform: scale(0);
+	box-shadow: 14px -5px 35px -21px rgba(0, 0, 0, 0.66);
+}
+.homepage .homepage-slide .container .contents:nth-child(7) {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	left: -300px;
+	transition: 0.5s;
+	z-index: 70;
+	filter: brightness(0%);
+	transform: scale(0);
+	box-shadow: 14px -5px 35px -21px rgba(0, 0, 0, 0.66);
+}
+.homepage .homepage-slide .container .contents:nth-child(8) {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	left: -280px;
+	transition: 0.5s;
+	z-index: 80;
+	filter: brightness(30%);
+	transform: scale(0.75);
+	box-shadow: 14px -5px 35px -21px rgba(0, 0, 0, 0.66);
+}
+.homepage .homepage-slide .container .contents:nth-child(9) {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	left: -140px;
+	transition: 0.5s;
+	z-index: 90;
+	filter: brightness(60%);
+	transform: scale(0.9);
+	box-shadow: 14px -5px 35px -21px rgba(0, 0, 0, 0.66);
+}
+.homepage .homepage-slide .container .contents:nth-child(10) {
 	width: 100%;
 	height: 100%;
 	position: absolute;
@@ -536,14 +580,14 @@ body.dark .search-center .search-box .search-results li:hover .text {
 	transition: 0.5s;
 	z-index: 110;
 	opacity: 1;
-	transform: scale(1.01);
+	transform: scale(1.005);
 	box-shadow: 14px -5px 35px -21px rgba(0, 0, 0, 0.66);
 }
-.homepage .homepage-slide .container .contents:nth-child(7) {
+.homepage .homepage-slide .container .contents:nth-child(11) {
 	width: 0px;
 	height: 100%;
 	position: absolute;
-	left: 93%;
+	left: 80%;
 	top: 0%;
 	transition: 0.5s;
 	z-index: 105;
@@ -552,6 +596,9 @@ body.dark .search-center .search-box .search-results li:hover .text {
 	transform: scale(1.01);
 	box-shadow: 14px -5px 35px -21px rgba(0, 0, 0, 0.66);
 	overflow: auto;
+}
+.homepage .homepage-slide .container .contents img {
+	object-fit: cover;
 }
 .homepage .homepage-slide .container .contents .slide-thumb {
 	width: inherit;
@@ -749,6 +796,7 @@ body.dark .search-center .search-box .search-results li:hover .text {
 	/* border-radius: 50%; */
 	margin: 5px 8px;
 	overflow: hidden;
+	cursor: pointer;
 	/* box-shadow: var(--box-shadow-02); */
 	/* background-color: red; */
 }
@@ -875,6 +923,9 @@ body.dark .search-center .search-box .search-results li:hover .text {
 	box-shadow: var(--box-shadow-02);
 	cursor: pointer;
 }
+.description-cell .youtube-section-no-icon .thumb {
+	width: 100%;
+}
 .youtube-section-no-icon .thumb {
 	width: 50%;
 	height: 76px;
@@ -890,24 +941,24 @@ body.dark .search-center .search-box .search-results li:hover .text {
 }
 .youtube-section-no-icon .detail {
 	display: flex;
-	width: 44%;
-	height: 90%;
-	margin: 2.5% 0.5%;
+	width: 70%;
+	height: 100%;
 	flex-direction: column;
 	justify-content: space-between;
 	/* background-color: green; */
 }
 
 .youtube-section-no-icon .detail .title {
+	margin: 10% 0.5%;
 	display: flex;
 	width: 100%;
 	height: auto;
-	max-height: 65%;
+	max-height: 80%;
 	/* background-color: yellow; */
 }
 .youtube-section-no-icon .detail .title .text {
-	font-size: 11px;
-	font-weight: 700;
+	font-size: 12px;
+	font-weight: 600;
 	white-space: pre-wrap;
 	word-wrap: break-word;
 	word-break: break-all;
@@ -918,7 +969,7 @@ body.dark .search-center .search-box .search-results li:hover .text {
 .youtube-section-no-icon .detail .name {
 	display: flex;
 	width: 100%;
-	height: 35%;
+	max-height: 35%;
 	/* background-color: #00ffd5; */
 	/* align-items: center; */
 }
@@ -1067,6 +1118,11 @@ body.dark .search-center .search-box .search-results li:hover .text {
 	height: fit-content;
 	max-height: 80px;
 	overflow-y: hidden;
+}
+.kirinukerList .kirinuker .body .kirinuker-recent .youtube-section-no-icon .detail .title .text {
+	font-size: 16px;
+	font-weight: 600;
+	margin: 2px 4px;
 }
 .kirinukerList .kirinuker .footer {
 	background: var(--primary-color-light);
